@@ -16,6 +16,3 @@ Organisation	5. Semester: Konzeptionierung, Modellierung, Implementierung;
 6. Semester: Statistische Parameteranalyse, Test,
                        Proof of Concept (PoC), Dokumentation.
 Rahmenbed.	Programmiersprache Java 10; zugelassene externe Bibliothek: JUnit.
-Status	Entwurf
-
-Dr. Carsten Müller // 10.10.2018
