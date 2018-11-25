@@ -24,10 +24,8 @@
             </padding>
         </HBox>
 
-        <HBox alignment="BOTTOM_CENTER" spacing="20.0" style="-fx-background-color: Gray" minHeight="20">
-
+        <HBox alignment="BOTTOM_LEFT" spacing="20.0" style="-fx-background-color: Gray" minHeight="20">
         </HBox>
-        <GridPane fx:id="grid" gridLinesVisible="true" />
     </children>
 </VBox>
 
