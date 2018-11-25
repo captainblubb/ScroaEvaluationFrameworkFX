@@ -50,15 +50,12 @@ public class Controller implements IUpdateable {
         CyclicBarrier cyclicBarrier = new CyclicBarrier(2);
         IEquation equation = new Rastrigin();
 
-        ExecutorService executor = Executors.newFixedThreadPool(2);
-        Runnable worker = new CROA(equation,this,1,cyclicBarrier);
-        Runnable worker2 = new SCROA(equation,this,2,cyclicBarrier);
-        executor.execute(worker2);
-        executor.execute(worker);
+        Thread worker = new Thread(new CROA(equation,this,1,cyclicBarrier));
+        Thread worker2 = new Thread(new SCROA(equation,this,2,cyclicBarrier));
 
-        executor.shutdown();
-        while (!executor.isTerminated()) {
-        }
+        worker.start();
+        worker2.start();
+
         System.out.println("Finished all threads");
 
     }

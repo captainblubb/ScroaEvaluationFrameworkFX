@@ -9,10 +9,6 @@ import javafx.stage.Stage;
 
 public class Main extends Application{
 
-    @Override
-    public void init(){
-
-    }
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -21,11 +17,6 @@ public class Main extends Application{
         primaryStage.setScene(new Scene(root, 700, 500));
         primaryStage.show();
         Platform.setImplicitExit( false );
-
-    }
-
-    @Override
-    public void stop(){
 
     }
 
