@@ -1,4 +1,4 @@
-package gui.updateObject;
+package main.updateObject;
 
 public interface IUpdateable {
 

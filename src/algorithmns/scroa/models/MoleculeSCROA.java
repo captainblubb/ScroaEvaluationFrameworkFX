@@ -5,7 +5,7 @@ import algorithmns.croa.bestSolution.IBestSolutionNotifier;
 import algorithmns.croa.calculatePE.ICalculatorPE;
 import algorithmns.croa.equations.IEquation;
 import algorithmns.croa.models.Point;
-//import gui.updateObject.Point3d;
+//import main.updateObject.Point3d;
 //import jdk.jshell.spi.ExecutionControl;
 
 import java.util.ArrayList;

@@ -29,9 +29,9 @@ import algorithmns.scroa.pso.psoUpdate.PsoUpdate;
 import configuration.logger.LoggerFileWriter;
 import configuration.randomGenerator.IRandomGenerator;
 import configuration.randomGenerator.MersenneTwisterFast;
-import gui.updateObject.IUpdateable;
-import gui.updateObject.Point3d;
-import gui.updateObject.UpdateObject;
+import main.updateObject.IUpdateable;
+import main.updateObject.Point3d;
+import main.updateObject.UpdateObject;
 
 import java.util.ArrayList;
 import java.util.List;
