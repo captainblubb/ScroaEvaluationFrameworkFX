@@ -16,3 +16,7 @@ Organisation	5. Semester: Konzeptionierung, Modellierung, Implementierung;
 6. Semester: Statistische Parameteranalyse, Test,
                        Proof of Concept (PoC), Dokumentation.
 Rahmenbed.	Programmiersprache Java 10; zugelassene externe Bibliothek: JUnit.
+
+<p align="center">
+  <img src="https://github.com/captainblubb/ScroaEvaluationFramework/blob/master/res/GUIMockup.PNG?raw=true" alt="Mockup">
+</p>
