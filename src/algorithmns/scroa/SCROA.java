@@ -53,6 +53,7 @@ public class SCROA implements IAlgorithm {
     LoggerFileWriter loggerFileWriter;
     CyclicBarrier barrier;
     IUpdateable gui;
+
     //Observerpattern which stores the best current solution of all Molecues
     IBestSolutionListener currentBestSolution;
 
