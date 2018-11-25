@@ -18,5 +18,5 @@ Organisation	5. Semester: Konzeptionierung, Modellierung, Implementierung;
 Rahmenbed.	Programmiersprache Java 10; zugelassene externe Bibliothek: JUnit.
 
 <p align="center">
-  <img src="https://github.com/captainblubb/ScroaEvaluationFramework/blob/master/res/GUIMockup.PNG?raw=true" alt="Mockup">
+  <img src="https://github.com/captainblubb/ScroaEvaluationFrameworkFX/blob/inital/res/GUIMockup.png?raw=true" alt="Mockup">
 </p>
