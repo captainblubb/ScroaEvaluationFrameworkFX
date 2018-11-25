@@ -54,8 +54,10 @@ public class SCROA implements IAlgorithm {
     CyclicBarrier barrier;
     IUpdateable gui;
 
+
+
     //Observerpattern which stores the best current solution of all Molecues
-    IBestSolutionListener currentBestSolution;
+    IBestSolutionListener currentBestSolution = null;
 
     //For update -> which algorithmn needs to be updated 1 or 2
     int algorithmCounter;
