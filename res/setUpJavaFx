@@ -2,7 +2,7 @@ https://openjfx.io/openjfx-docs/#introduction
 
 Set up SDK 11 with JavaFX, which is not included in Java SDK anymore
 
-Appearance and Behaviour -> Path Variables -> Create new to lib in JavaFX folder (download from github)
+Appearance and Behaviour -> Path Variables -> Create new Path variable to lib in JavaFX folder
 
 Set variable PATH_TO_FX
 
