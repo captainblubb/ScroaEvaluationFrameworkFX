@@ -65,7 +65,8 @@ class SynthesisTest {
 
         if(synthesisResult!=null) {
 
-            Assert.assertTrue(pe1+ke1+ke2+pe2 + bufferBefore >= synthesisResult.getPE()+synthesisResult.getKE()+buffer.getBuffer());
+            //Same Energylevel
+            assertEquals(ke1 + ke2 + pe1 + pe2 + bufferBefore , molecules.get(0).getKE() + molecules.get(1).getKE() +buffer.getBuffer()+ molecules.get(0).getPE() + molecules.get(1).getPE());
 
             boolean inBoundrysMolecule1 = !(synthesisResult.getCurrentStructure().x >= currentEquation.getBoundrys().getMaxX()
                     || synthesisResult.getCurrentStructure().y >= currentEquation.getBoundrys().getMaxY()

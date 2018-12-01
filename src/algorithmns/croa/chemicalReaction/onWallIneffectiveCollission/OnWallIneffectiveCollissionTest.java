@@ -66,9 +66,8 @@ public class OnWallIneffectiveCollissionTest {
 
         this.onWallIneffectiveCollission.onWallIneffectiveCollission(molecules.get(1));
 
-        Assert.assertTrue(ke1+ke2+pe1+pe2+bufferBefore >= molecules.get(0).getKE()+molecules.get(1).getKE()+molecules.get(0).getPE() + molecules.get(1).getPE());
-
-        assertEquals(pe1+pe2 +buffer.getBuffer(), molecules.get(0).getPE() + molecules.get(1).getPE());
+        //Same Energylevel
+        assertEquals(ke1 + ke2 + pe1 + pe2 + bufferBefore , molecules.get(0).getKE() + molecules.get(1).getKE() + molecules.get(0).getPE() + molecules.get(1).getPE());
 
         boolean inBoundrysMolecule1 = !(molecules.get(0).getCurrentStructure().x >= currentEquation.getBoundrys().getMaxX()
                 || molecules.get(0).getCurrentStructure().y >= currentEquation.getBoundrys().getMaxY()

@@ -46,15 +46,15 @@ class InterMolecularIneffectiveCollissionTest {
     }
 
     @Test
-    public void synthesis_Test(){
+    public void synthesis_Test() {
 
 
-        for (int i = 0; i<2; i++){
+        for (int i = 0; i < 2; i++) {
             //Generate koords
-            double randomX =(randomGenerator.nextDouble() * (currentEquation.getBoundrys().getMaxX()- currentEquation.getBoundrys().getMinX())+ currentEquation.getBoundrys().getMinX());
-            double randomY =(randomGenerator.nextDouble() * (currentEquation.getBoundrys().getMaxY()- currentEquation.getBoundrys().getMinY())+ currentEquation.getBoundrys().getMinY());
-            IMolecule molecule = new MoleculeCROA(new Point(randomX,randomY), currentEquation.calculateValue(new Point(randomX,randomY)),calculatorPE, currentEquation);
-            molecule.setKE(globalConfig.minimumKe-1);
+            double randomX = (randomGenerator.nextDouble() * (currentEquation.getBoundrys().getMaxX() - currentEquation.getBoundrys().getMinX()) + currentEquation.getBoundrys().getMinX());
+            double randomY = (randomGenerator.nextDouble() * (currentEquation.getBoundrys().getMaxY() - currentEquation.getBoundrys().getMinY()) + currentEquation.getBoundrys().getMinY());
+            IMolecule molecule = new MoleculeCROA(new Point(randomX, randomY), currentEquation.calculateValue(new Point(randomX, randomY)), calculatorPE, currentEquation);
+            molecule.setKE(globalConfig.minimumKe - 1);
             molecules.add(molecule);
         }
 
@@ -62,14 +62,13 @@ class InterMolecularIneffectiveCollissionTest {
         double pe2 = molecules.get(1).getPE();
         double ke1 = molecules.get(0).getKE();
         double ke2 = molecules.get(1).getKE();
-
         double bufferBefore = buffer.getBuffer();
 
         this.interMolecularIneffectiveCollission.interMolecularIneffectiveCollission(molecules.get(0), molecules.get(1));
 
-        Assert.assertTrue(ke1+ke2+pe1+pe2+bufferBefore >= molecules.get(0).getKE()+molecules.get(1).getKE()+molecules.get(0).getPE() + molecules.get(1).getPE());
+        //Same Energylevel
+        assertEquals(ke1 + ke2 + pe1 + pe2 + bufferBefore , molecules.get(0).getKE() + molecules.get(1).getKE() + molecules.get(0).getPE() + molecules.get(1).getPE());
 
-        assertEquals(pe1+pe2 +buffer.getBuffer(), molecules.get(0).getPE() + molecules.get(1).getPE());
 
         boolean inBoundrysMolecule1 = !(molecules.get(0).getCurrentStructure().x >= currentEquation.getBoundrys().getMaxX()
                 || molecules.get(0).getCurrentStructure().y >= currentEquation.getBoundrys().getMaxY()
@@ -83,8 +82,6 @@ class InterMolecularIneffectiveCollissionTest {
                 || molecules.get(1).getCurrentStructure().y <= -currentEquation.getBoundrys().getMaxY());
 
         Assert.assertTrue((inBoundrysMolecule1 && inBoundrysMolecule2));
-    }
-
     }
 
 }
