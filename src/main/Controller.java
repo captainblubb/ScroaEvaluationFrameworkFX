@@ -42,6 +42,7 @@ public class Controller implements IUpdateable {
     @FXML
     private Button pauseButton;
 
+    IEquation currentEquation;
 
     @FXML
     private void startSimulation() {
@@ -49,6 +50,7 @@ public class Controller implements IUpdateable {
 
         CyclicBarrier cyclicBarrier = new CyclicBarrier(2);
         IEquation equation = new Rastrigin();
+        currentEquation = equation;
 
         Thread worker = new Thread(new CROA(equation,this,1,cyclicBarrier));
         Thread worker2 = new Thread(new SCROA(equation,this,2,cyclicBarrier));
@@ -75,6 +77,15 @@ public class Controller implements IUpdateable {
         System.out.println("Update Received Best point of algorithmn "+updateObject.getAlgorithmCounter()
                 +" : Iteration: "+updateObject.getIteration()+" "+updateObject.getBestPoint().toParseFormat()
                 +" Population count : "+updateObject.getPoints().size());
+
+        for(int i = 0; i<updateObject.getPoints().size();i++){
+            if(updateObject.getPoints().get(i).x >= currentEquation.getBoundrys().getMaxX()
+                    || updateObject.getPoints().get(i).y >= currentEquation.getBoundrys().getMaxY()
+                    ||updateObject.getPoints().get(i).x <= currentEquation.getBoundrys().getMinX()
+                    || updateObject.getPoints().get(i).y <= -currentEquation.getBoundrys().getMaxY()){
+                System.out.println("Bad Point in ALgo"+updateObject.getAlgorithmCounter()+" : "+ updateObject.getPoints().get(i).toParseFormat());
+            }
+        }
     }
 
 }

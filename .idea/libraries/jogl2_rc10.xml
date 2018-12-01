@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="jogl2-rc10">
+    <CLASSES>
+      <root url="file:///Library/Java/JavaVirtualMachines/jzy3d-api-master/jzy3d-api/lib/jogl2-rc10" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file:///Library/Java/JavaVirtualMachines/jzy3d-api-master/jzy3d-api/lib/jogl2-rc10" recursive="false" />
+  </library>
+</component>

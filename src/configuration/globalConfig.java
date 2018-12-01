@@ -15,7 +15,7 @@ public class globalConfig {
     public static double KEminLossRate = 0.1; //min Ke that is lost in onWallIneffective in %
     public static double MoleColl = 0.6; //Percentage of propability -> unimol or intermol reaction ::: MoleColl Higher results in more intermol coll
     public static double InitialKE = 50.0; // Initial KE of each MoleculeCROA
-    public static double minimumKe = 1.0; //Minimum of KE -> if Ke is less -> synthesis
+    public static double minimumKe = 5.0; //Minimum of KE -> if Ke is less -> synthesis
     public static double InitialBuffer = 0.0; // Initial Buffer Energy
     public static int numberOfHitsForDecomposition = 60; //hits in molecule which leads to decomposition
 
