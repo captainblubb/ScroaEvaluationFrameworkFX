@@ -2,8 +2,8 @@ package main;
 
 import algorithmns.croa.CROA;
 import configuration.configuration.globalConfig;
-import configuration.equations.IEquation;
-import configuration.equations.Rastrigin;
+import algorithmns.equations.IEquation;
+import algorithmns.equations.Rastrigin;
 import algorithmns.scroa.SCROA;
 import main.updateObject.IUpdateable;
 import main.updateObject.UpdateObject;

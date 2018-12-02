@@ -1,4 +1,4 @@
-package configuration.equations.boundrys;
+package algorithmns.equations.boundrys;
 
 public class Boundrys {
 

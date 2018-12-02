@@ -1,7 +1,7 @@
-package configuration.equations;
+package algorithmns.equations;
 
 import configuration.configuration.ConfigurationAlgorithm;
-import configuration.equations.boundrys.Boundrys;
+import algorithmns.equations.boundrys.Boundrys;
 import algorithmns.croa.models.Point;
 
 public interface IEquation {

@@ -1,4 +1,4 @@
-package configuration.equations;
+package algorithmns.equations;
 
 import algorithmns.croa.models.Point;
 import org.junit.*;

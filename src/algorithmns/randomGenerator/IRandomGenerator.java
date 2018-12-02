@@ -1,4 +1,4 @@
-package configuration.randomGenerator;
+package algorithmns.randomGenerator;
 
 public interface IRandomGenerator {
 

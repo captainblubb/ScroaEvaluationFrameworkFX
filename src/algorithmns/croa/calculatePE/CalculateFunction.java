@@ -1,6 +1,6 @@
 package algorithmns.croa.calculatePE;
 
-import configuration.equations.IEquation;
+import algorithmns.equations.IEquation;
 import algorithmns.croa.models.Point;
 
 public class CalculateFunction implements ICalculatorPE {

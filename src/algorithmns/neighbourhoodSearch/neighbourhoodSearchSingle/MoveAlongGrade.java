@@ -1,9 +1,9 @@
-package configuration.neighbourhoodSearch.neighbourhoodSearchSingle;
+package algorithmns.neighbourhoodSearch.neighbourhoodSearchSingle;
 
 import configuration.configuration.globalConfig;
-import configuration.equations.IEquation;
+import algorithmns.equations.IEquation;
 import algorithmns.croa.models.Point;
-import configuration.randomGenerator.IRandomGenerator;
+import algorithmns.randomGenerator.IRandomGenerator;
 
 public class MoveAlongGrade implements INeighbourhoodSearchSingle {
 

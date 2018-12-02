@@ -1,9 +1,9 @@
 package algorithmns.scroa.models;
 
-import configuration.bestSolution.IBestSolutionListener;
-import configuration.bestSolution.IBestSolutionNotifier;
+import algorithmns.bestSolution.IBestSolutionListener;
+import algorithmns.bestSolution.IBestSolutionNotifier;
 import algorithmns.croa.calculatePE.ICalculatorPE;
-import configuration.equations.IEquation;
+import algorithmns.equations.IEquation;
 import algorithmns.croa.models.Point;
 //import main.updateObject.Point3d;
 //import jdk.jshell.spi.ExecutionControl;

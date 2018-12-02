@@ -1,4 +1,4 @@
-package configuration.bestSolution;
+package algorithmns.bestSolution;
 
 public interface IBestSolutionNotifier {
 

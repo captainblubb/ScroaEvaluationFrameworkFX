@@ -1,4 +1,4 @@
-package configuration.randomGenerator;
+package algorithmns.randomGenerator;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
