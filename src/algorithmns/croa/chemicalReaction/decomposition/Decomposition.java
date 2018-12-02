@@ -1,6 +1,6 @@
 package algorithmns.croa.chemicalReaction.decomposition;
 
-import algorithmns.croa.equations.boundrys.Boundrys;
+import configuration.equations.boundrys.Boundrys;
 import algorithmns.croa.models.Buffer;
 import algorithmns.croa.models.IMolecule;
 import algorithmns.croa.models.MoleculeCROA;

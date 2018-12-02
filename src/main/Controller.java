@@ -1,8 +1,8 @@
 package main;
 
 import algorithmns.croa.CROA;
-import algorithmns.croa.equations.IEquation;
-import algorithmns.croa.equations.Rastrigin;
+import configuration.equations.IEquation;
+import configuration.equations.Rastrigin;
 import algorithmns.scroa.SCROA;
 import main.updateObject.IUpdateable;
 import main.updateObject.UpdateObject;
@@ -13,8 +13,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 
 import java.util.concurrent.CyclicBarrier;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class Controller implements IUpdateable {
 

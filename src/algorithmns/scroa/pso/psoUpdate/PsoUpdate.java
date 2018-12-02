@@ -1,6 +1,6 @@
 package algorithmns.scroa.pso.psoUpdate;
 
-import algorithmns.croa.bestSolution.IBestSolutionListener;
+import configuration.bestSolution.IBestSolutionListener;
 import algorithmns.croa.models.Buffer;
 import algorithmns.croa.models.Point;
 import algorithmns.scroa.models.IMoleculeSCROA;

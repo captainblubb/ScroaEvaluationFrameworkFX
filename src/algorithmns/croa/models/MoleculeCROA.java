@@ -1,8 +1,8 @@
 package algorithmns.croa.models;
 
-import algorithmns.croa.bestSolution.IBestSolutionListener;
+import configuration.bestSolution.IBestSolutionListener;
 import algorithmns.croa.calculatePE.ICalculatorPE;
-import algorithmns.croa.equations.IEquation;
+import configuration.equations.IEquation;
 
 import java.util.ArrayList;
 

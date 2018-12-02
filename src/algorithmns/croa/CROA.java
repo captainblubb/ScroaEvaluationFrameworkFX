@@ -1,8 +1,6 @@
 package algorithmns.croa;
 
 import algorithmns.IAlgorithm;
-import algorithmns.croa.bestSolution.BestSolution;
-import algorithmns.croa.bestSolution.IBestSolutionListener;
 import algorithmns.croa.calculatePE.CalculateFunction;
 import algorithmns.croa.calculatePE.ICalculatorPE;
 import algorithmns.croa.chemicalReaction.ChemicalReaction;
@@ -15,23 +13,24 @@ import algorithmns.croa.chemicalReaction.onWallIneffectiveCollission.IOnWallInef
 import algorithmns.croa.chemicalReaction.onWallIneffectiveCollission.OnWallIneffectiveCollission;
 import algorithmns.croa.chemicalReaction.synthesis.ISynthesis;
 import algorithmns.croa.chemicalReaction.synthesis.Synthesis;
-import algorithmns.croa.equations.IEquation;
-import algorithmns.croa.equations.boundrys.Boundrys;
+import configuration.equations.boundrys.Boundrys;
 import algorithmns.croa.models.Buffer;
 import algorithmns.croa.models.IMolecule;
 import algorithmns.croa.models.MoleculeCROA;
 import algorithmns.croa.models.Point;
-import algorithmns.croa.neighbourhoodSearch.neighbourhoodSearchSingle.INeighbourhoodSearchSingle;
-import algorithmns.croa.neighbourhoodSearch.neighbourhoodSearchSingle.MoveAlongGrade;
-import algorithmns.croa.neighbourhoodSearch.neighbourhoodSearchTwo.INeighbourhoodSearchTwo;
-import algorithmns.croa.neighbourhoodSearch.neighbourhoodSearchTwo.RandombasedSearch;
-import configuration.globalConfig;
+import configuration.neighbourhoodSearch.neighbourhoodSearchSingle.INeighbourhoodSearchSingle;
+import configuration.neighbourhoodSearch.neighbourhoodSearchSingle.MoveAlongGrade;
+import configuration.neighbourhoodSearch.neighbourhoodSearchTwo.INeighbourhoodSearchTwo;
+import configuration.neighbourhoodSearch.neighbourhoodSearchTwo.RandombasedSearch;
+import configuration.bestSolution.*;
+import configuration.configuration.globalConfig;
 import configuration.logger.LoggerFileWriter;
 import configuration.randomGenerator.IRandomGenerator;
 import configuration.randomGenerator.MersenneTwisterFast;
 import main.updateObject.IUpdateable;
 import main.updateObject.Point3d;
 import main.updateObject.UpdateObject;
+import configuration.equations.*;
 
 import java.util.ArrayList;
 import java.util.List;

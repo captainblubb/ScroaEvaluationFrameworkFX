@@ -1,8 +1,8 @@
 package algorithmns.croa.chemicalReaction.onWallIneffectiveCollission;
 
 import algorithmns.croa.models.IMolecule;
-import algorithmns.croa.neighbourhoodSearch.neighbourhoodSearchSingle.INeighbourhoodSearchSingle;
-import configuration.globalConfig;
+import configuration.neighbourhoodSearch.neighbourhoodSearchSingle.INeighbourhoodSearchSingle;
+import configuration.configuration.globalConfig;
 import algorithmns.croa.models.Buffer;
 import algorithmns.croa.models.Point;
 import configuration.randomGenerator.IRandomGenerator;

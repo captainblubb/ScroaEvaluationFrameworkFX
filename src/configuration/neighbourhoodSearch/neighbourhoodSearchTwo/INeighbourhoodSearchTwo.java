@@ -1,4 +1,4 @@
-package algorithmns.croa.neighbourhoodSearch.neighbourhoodSearchTwo;
+package configuration.neighbourhoodSearch.neighbourhoodSearchTwo;
 
 import algorithmns.croa.models.Point;
 

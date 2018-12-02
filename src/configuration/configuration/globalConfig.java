@@ -1,4 +1,4 @@
-package configuration;
+package configuration.configuration;
 
 //Holding Parameters
 public class globalConfig {

@@ -2,19 +2,16 @@ package algorithmns.croa.chemicalReaction.synthesis;
 
 import algorithmns.croa.calculatePE.CalculateFunction;
 import algorithmns.croa.calculatePE.ICalculatorPE;
-import algorithmns.croa.chemicalReaction.decomposition.Decomposition;
-import algorithmns.croa.equations.IEquation;
-import algorithmns.croa.equations.Rosenbrock;
+import configuration.equations.IEquation;
+import configuration.equations.Rosenbrock;
 import algorithmns.croa.models.Buffer;
 import algorithmns.croa.models.IMolecule;
 import algorithmns.croa.models.MoleculeCROA;
 import algorithmns.croa.models.Point;
-import configuration.globalConfig;
+import configuration.configuration.globalConfig;
 import configuration.randomGenerator.IRandomGenerator;
 import configuration.randomGenerator.MersenneTwisterFast;
 import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

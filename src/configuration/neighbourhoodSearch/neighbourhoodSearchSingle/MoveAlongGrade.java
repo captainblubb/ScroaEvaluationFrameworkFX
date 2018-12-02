@@ -1,10 +1,10 @@
-package algorithmns.croa.neighbourhoodSearch.neighbourhoodSearchSingle;
+package configuration.neighbourhoodSearch.neighbourhoodSearchSingle;
 
-import algorithmns.croa.equations.IEquation;
+import configuration.equations.IEquation;
 import algorithmns.croa.models.Point;
 import configuration.randomGenerator.IRandomGenerator;
 
-import static configuration.globalConfig.MoveAlongGradeMaxStep;
+import static configuration.configuration.globalConfig.MoveAlongGradeMaxStep;
 
 public class MoveAlongGrade implements INeighbourhoodSearchSingle {
 

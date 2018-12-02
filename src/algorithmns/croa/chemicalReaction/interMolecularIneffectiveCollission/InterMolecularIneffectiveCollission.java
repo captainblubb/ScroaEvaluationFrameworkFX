@@ -1,7 +1,7 @@
 package algorithmns.croa.chemicalReaction.interMolecularIneffectiveCollission;
 
 import algorithmns.croa.models.IMolecule;
-import algorithmns.croa.neighbourhoodSearch.neighbourhoodSearchTwo.INeighbourhoodSearchTwo;
+import configuration.neighbourhoodSearch.neighbourhoodSearchTwo.INeighbourhoodSearchTwo;
 import algorithmns.croa.models.Buffer;
 import algorithmns.croa.models.Point;
 import configuration.randomGenerator.IRandomGenerator;

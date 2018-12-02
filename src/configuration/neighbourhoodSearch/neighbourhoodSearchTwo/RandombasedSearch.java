@@ -1,7 +1,7 @@
-package algorithmns.croa.neighbourhoodSearch.neighbourhoodSearchTwo;
+package configuration.neighbourhoodSearch.neighbourhoodSearchTwo;
 
-import algorithmns.croa.equations.IEquation;
-import algorithmns.croa.equations.boundrys.Boundrys;
+import configuration.equations.IEquation;
+import configuration.equations.boundrys.Boundrys;
 import algorithmns.croa.models.Point;
 import configuration.randomGenerator.IRandomGenerator;
 
