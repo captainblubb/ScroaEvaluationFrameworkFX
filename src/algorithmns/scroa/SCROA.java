@@ -74,7 +74,7 @@ public class SCROA implements IAlgorithm {
         // Initialzation
 
         //buffer
-        buffer = new Buffer(globalConfig.InitialBuffer);
+        buffer = new Buffer(globalConfig.configurationAlgorithm.InitialBuffer);
         calculatorPE = new CalculateFunction();
         // Initialize algorithmns.croa
         //random generator -> init with nanoTime for less cluster
@@ -135,11 +135,11 @@ public class SCROA implements IAlgorithm {
 
             //System.out.println(point.toParseFormat());
 
-            double velocityX = randomGenerator.nextDouble()*2* configPSO.InitialMaxLengthVelocityPerDim - configPSO.InitialMaxLengthVelocityPerDim;
+            double velocityX = randomGenerator.nextDouble()*2* globalConfig.configurationAlgorithm.InitialMaxLengthVelocityPerDim - globalConfig.configurationAlgorithm.InitialMaxLengthVelocityPerDim;
 
-            double velocityY = randomGenerator.nextDouble()*2* configPSO.InitialMaxLengthVelocityPerDim - configPSO.InitialMaxLengthVelocityPerDim;
+            double velocityY = randomGenerator.nextDouble()*2* globalConfig.configurationAlgorithm.InitialMaxLengthVelocityPerDim - globalConfig.configurationAlgorithm.InitialMaxLengthVelocityPerDim;
 
-            MoleculeSCROA molecule = new MoleculeSCROA(point, globalConfig.InitialKE,calculatorPE,equation,new Point(velocityX,velocityY));
+            MoleculeSCROA molecule = new MoleculeSCROA(point, globalConfig.configurationAlgorithm.InitialKE,calculatorPE,equation,new Point(velocityX,velocityY));
             population.add(molecule);
 
         }
@@ -187,13 +187,13 @@ public class SCROA implements IAlgorithm {
 
 
                                     //unimolekular reaction
-                                    if (randomCollission >= globalConfig.MoleColl || molecules.size() == 1) {
+                                    if (randomCollission >= globalConfig.configurationAlgorithm.MoleColl || molecules.size() == 1) {
 
                                         int randomIndex = randomGenerator.nextInt(0, molecules.size() - 1);
 
                                         IMoleculeSCROA selectedMolecule = molecules.get(randomIndex);
 
-                                        if (selectedMolecule.getNumberOfHits() >= globalConfig.numberOfHitsForDecomposition) {
+                                        if (selectedMolecule.getNumberOfHits() >= globalConfig.configurationAlgorithm.numberOfHitsForDecomposition) {
                                             //PSO
                                             psoHappendInsteadOfDecomp++;
                                             chemicalReactionsSCROA.psoUpdate(selectedMolecule);
@@ -218,7 +218,7 @@ public class SCROA implements IAlgorithm {
                                         IMoleculeSCROA molecule1 = molecules.get(randomIndex1);
                                         IMoleculeSCROA molecule2 = molecules.get(randomIndex2);
 
-                                        if (molecule1.getKE() <= globalConfig.minimumKe && molecule2.getKE() <= globalConfig.minimumKe) {
+                                        if (molecule1.getKE() <= globalConfig.configurationAlgorithm.minimumKe && molecule2.getKE() <= globalConfig.configurationAlgorithm.minimumKe) {
                                             //PSO
                                             psoHappendInsteadOfSynthesis++;
                                             chemicalReactionsSCROA.psoUpdate(molecule1);

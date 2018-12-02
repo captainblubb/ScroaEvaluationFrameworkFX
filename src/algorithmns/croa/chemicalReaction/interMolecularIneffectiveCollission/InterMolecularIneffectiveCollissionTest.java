@@ -51,7 +51,7 @@ class InterMolecularIneffectiveCollissionTest {
             double randomX = (randomGenerator.nextDouble() * (currentEquation.getBoundrys().getMaxX() - currentEquation.getBoundrys().getMinX()) + currentEquation.getBoundrys().getMinX());
             double randomY = (randomGenerator.nextDouble() * (currentEquation.getBoundrys().getMaxY() - currentEquation.getBoundrys().getMinY()) + currentEquation.getBoundrys().getMinY());
             IMolecule molecule = new MoleculeCROA(new Point(randomX, randomY), currentEquation.calculateValue(new Point(randomX, randomY)), calculatorPE, currentEquation);
-            molecule.setKE(globalConfig.minimumKe - 1);
+            molecule.setKE(globalConfig.configurationAlgorithm.minimumKe - 1);
             molecules.add(molecule);
         }
 

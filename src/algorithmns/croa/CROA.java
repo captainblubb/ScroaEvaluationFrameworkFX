@@ -69,7 +69,7 @@ public class CROA implements IAlgorithm {
         // Initialzation
 
         //buffer
-        buffer = new Buffer(globalConfig.InitialBuffer);
+        buffer = new Buffer(globalConfig.configurationAlgorithm.InitialBuffer);
         calculatorPE = new CalculateFunction();
         // Initialize algorithmns.croa
         //random generator -> init with nanoTime for less cluster
@@ -130,7 +130,7 @@ public class CROA implements IAlgorithm {
 
             Point point = new Point(fixInX+randomX,fixInY+randomY);
            //System.out.println(point.toParseFormat());
-            MoleculeCROA molecule = new MoleculeCROA(point, globalConfig.InitialKE,calculatorPE,equation);
+            MoleculeCROA molecule = new MoleculeCROA(point, globalConfig.configurationAlgorithm.InitialKE,calculatorPE,equation);
             population.add(molecule);
 
         }
@@ -176,13 +176,13 @@ public class CROA implements IAlgorithm {
 
 
                             //unimolekular reaction
-                            if (randomCollission >= globalConfig.MoleColl || molecules.size() == 1) {
+                            if (randomCollission >= globalConfig.configurationAlgorithm.MoleColl || molecules.size() == 1) {
 
                                 int randomIndex = randomGenerator.nextInt(0, molecules.size() - 1);
 
                                 IMolecule selectedMolecule = molecules.get(randomIndex);
 
-                                if (selectedMolecule.getNumberOfHits() >= globalConfig.numberOfHitsForDecomposition) {
+                                if (selectedMolecule.getNumberOfHits() >= globalConfig.configurationAlgorithm.numberOfHitsForDecomposition) {
                                     //decomposition
                                     decompositionTrys++;
                                     List<IMolecule> decompositionResult = chemicalReactions.decomposition(selectedMolecule);
@@ -215,7 +215,7 @@ public class CROA implements IAlgorithm {
                                 IMolecule molecule1 = molecules.get(randomIndex1);
                                 IMolecule molecule2 = molecules.get(randomIndex2);
 
-                                if (molecule1.getKE() <= globalConfig.minimumKe && molecule2.getKE() <= globalConfig.minimumKe) {
+                                if (molecule1.getKE() <= globalConfig.configurationAlgorithm.minimumKe && molecule2.getKE() <= globalConfig.configurationAlgorithm.minimumKe) {
                                     //synthesis
                                     synthesisTrys++;
 

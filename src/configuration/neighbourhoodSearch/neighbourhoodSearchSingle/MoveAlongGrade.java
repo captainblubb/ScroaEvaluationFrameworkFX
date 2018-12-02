@@ -1,10 +1,9 @@
 package configuration.neighbourhoodSearch.neighbourhoodSearchSingle;
 
+import configuration.configuration.globalConfig;
 import configuration.equations.IEquation;
 import algorithmns.croa.models.Point;
 import configuration.randomGenerator.IRandomGenerator;
-
-import static configuration.configuration.globalConfig.MoveAlongGradeMaxStep;
 
 public class MoveAlongGrade implements INeighbourhoodSearchSingle {
 
@@ -39,7 +38,7 @@ public class MoveAlongGrade implements INeighbourhoodSearchSingle {
         }
 
         // 0...1
-        double factor = randomGenerator.nextDouble()*MoveAlongGradeMaxStep;
+        double factor = randomGenerator.nextDouble()* globalConfig.configurationAlgorithm.MoveAlongGradeMaxStep;
 
         //Faktor * Richtung der Steigung
         newX += grade.x * (1 / vectorLength) * factor;
