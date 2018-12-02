@@ -1,6 +1,7 @@
 package main;
 
 import algorithmns.croa.CROA;
+import configuration.configuration.globalConfig;
 import configuration.equations.IEquation;
 import configuration.equations.Rastrigin;
 import algorithmns.scroa.SCROA;
@@ -49,6 +50,7 @@ public class Controller implements IUpdateable {
         CyclicBarrier cyclicBarrier = new CyclicBarrier(2);
         IEquation equation = new Rastrigin();
         currentEquation = equation;
+        globalConfig.configurationAlgorithm = equation.getConfiguration();
 
         Thread worker = new Thread(new CROA(equation,this,1,cyclicBarrier));
         Thread worker2 = new Thread(new SCROA(equation,this,2,cyclicBarrier));
