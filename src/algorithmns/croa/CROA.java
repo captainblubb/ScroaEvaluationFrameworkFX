@@ -18,15 +18,15 @@ import algorithmns.croa.models.Buffer;
 import algorithmns.croa.models.IMolecule;
 import algorithmns.croa.models.MoleculeCROA;
 import algorithmns.croa.models.Point;
-import algorithmns.neighbourhoodSearch.neighbourhoodSearchSingle.INeighbourhoodSearchSingle;
-import algorithmns.neighbourhoodSearch.neighbourhoodSearchSingle.MoveAlongGrade;
-import algorithmns.neighbourhoodSearch.neighbourhoodSearchTwo.INeighbourhoodSearchTwo;
-import algorithmns.neighbourhoodSearch.neighbourhoodSearchTwo.RandombasedSearch;
-import algorithmns.bestSolution.*;
+import algorithmns.LocalSearcher.neighbourhoodSearch.neighbourhoodSearchSingle.INeighbourhoodSearchSingle;
+import algorithmns.LocalSearcher.neighbourhoodSearch.neighbourhoodSearchSingle.MoveAlongGrade;
+import algorithmns.LocalSearcher.neighbourhoodSearch.neighbourhoodSearchTwo.INeighbourhoodSearchTwo;
+import algorithmns.LocalSearcher.neighbourhoodSearch.neighbourhoodSearchTwo.RandombasedSearch;
+import algorithmns.bestSolutionObserver.*;
 import configuration.configuration.globalConfig;
 import configuration.logger.LoggerFileWriter;
-import algorithmns.randomGenerator.IRandomGenerator;
-import algorithmns.randomGenerator.MersenneTwisterFast;
+import algorithmns.LocalSearcher.randomGenerator.IRandomGenerator;
+import algorithmns.LocalSearcher.randomGenerator.MersenneTwisterFast;
 import main.updateObject.IUpdateable;
 import main.updateObject.Point3d;
 import main.updateObject.UpdateObject;
@@ -262,11 +262,19 @@ public class CROA implements IAlgorithm {
 
 
                     double energyEnd = molecules.stream().map(m -> m.getKE() + m.getPE()).collect(Collectors.summingDouble(d -> d)) + buffer.getBuffer();
+                    System.out.println("CROA  algorithm ("+algorithmCounter+") Best Point"+(new Point3d(currentBestSolution.getBestSolutionPoint().x,currentBestSolution.getBestSolutionPoint().y,currentBestSolution.getBestPE()).toParseFormat()));
                     System.out.println("CROA  algorithm (" +algorithmCounter+ ") Engieblinazstart : " + energyStart + "Engieblinazende : " + energyEnd + " start - end" + (energyStart - energyEnd));
                     System.out.println("CROA  algorithm (" +algorithmCounter+ ") interMol: " + interMolColHappend + " onWallin " + onWallCollHappend + " synthesis trys: "+synthesisTrys+" synthesis happend : " + synthesisHappend +" decomposition trys: "+ decompositionTrys+" decomposition happend " + decompositionHappend);
                     System.out.println("CROA  algorithm (" +algorithmCounter+ ") Average KE end " + molecules.stream().map(m -> m.getKE()).collect(Collectors.averagingDouble(d -> d)));
                     System.out.println("CROA  algorithm (" +algorithmCounter+ ") buffer at end " + buffer.getBuffer());
 
+                    System.out.println("___________________________________________");
+                    System.out.println();
+                    try {
+                     barrier.await();
+                    }catch (Exception exp){
+
+                    }
 
                     /*
 

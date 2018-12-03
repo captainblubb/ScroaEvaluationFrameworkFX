@@ -4,7 +4,7 @@ import algorithmns.croa.models.Buffer;
 import algorithmns.croa.models.IMolecule;
 import algorithmns.croa.models.MoleculeCROA;
 import algorithmns.croa.models.Point;
-import algorithmns.randomGenerator.IRandomGenerator;
+import algorithmns.LocalSearcher.randomGenerator.IRandomGenerator;
 
 public class Synthesis implements ISynthesis {
 

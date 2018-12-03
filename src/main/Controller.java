@@ -2,6 +2,7 @@ package main;
 
 import algorithmns.croa.CROA;
 import algorithmns.croa.models.Point;
+import algorithmns.equations.Rosenbrock;
 import configuration.configuration.globalConfig;
 import algorithmns.equations.IEquation;
 import algorithmns.equations.Rastrigin;
@@ -49,7 +50,7 @@ public class Controller implements IUpdateable {
 
 
         CyclicBarrier cyclicBarrier = new CyclicBarrier(2);
-        currentEquation = new Rastrigin();
+        currentEquation = new Rosenbrock();
         //globalConfig.configurationAlgorithm = equation.getConfiguration();
 
         Thread worker = new Thread(new CROA(currentEquation,this,1,cyclicBarrier));
@@ -74,9 +75,11 @@ public class Controller implements IUpdateable {
     @Override
     public void update(UpdateObject updateObject) {
 
+
         System.out.println("Update Received Best point of algorithmn "+updateObject.getAlgorithmCounter()
                 +" : Iteration: "+updateObject.getIteration()+" "+updateObject.getBestPoint().toParseFormat()
                 +" Population count : "+updateObject.getPoints().size());
+
 
         for(int i = 0; i<updateObject.getPoints().size();i++){
             if(updateObject.getPoints().get(i).x >= currentEquation.getBoundrys().getMaxX()
@@ -87,15 +90,13 @@ public class Controller implements IUpdateable {
             }
         }
 
-
-        //Output Standardabweichung zwischen punkten Je Koordinate
+        //Output aller Punkte am Ende
         if(updateObject.getIteration() == globalConfig.Iterations) {
             for (int i = 0; i < updateObject.getPoints().size(); i++) {
                 System.out.println(updateObject.getPoints().get(i).toParseFormat());
             }
         }
 
-        System.out.println("Update finished");
 
     }
 

@@ -1,4 +1,4 @@
-package algorithmns.randomGenerator;
+package algorithmns.LocalSearcher.randomGenerator;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;

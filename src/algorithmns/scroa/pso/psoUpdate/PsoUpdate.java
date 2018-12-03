@@ -1,11 +1,11 @@
 package algorithmns.scroa.pso.psoUpdate;
 
-import algorithmns.bestSolution.IBestSolutionListener;
+import algorithmns.bestSolutionObserver.IBestSolutionListener;
 import algorithmns.croa.models.Buffer;
 import algorithmns.croa.models.Point;
 import algorithmns.scroa.models.IMoleculeSCROA;
 import configuration.configuration.globalConfig;
-import algorithmns.randomGenerator.IRandomGenerator;
+import algorithmns.LocalSearcher.randomGenerator.IRandomGenerator;
 
 public class PsoUpdate implements IPSOUpdate{
 

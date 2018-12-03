@@ -1,10 +1,10 @@
 package algorithmns.croa.chemicalReaction.interMolecularIneffectiveCollission;
 
 import algorithmns.croa.models.IMolecule;
-import algorithmns.neighbourhoodSearch.neighbourhoodSearchTwo.INeighbourhoodSearchTwo;
+import algorithmns.LocalSearcher.neighbourhoodSearch.neighbourhoodSearchTwo.INeighbourhoodSearchTwo;
 import algorithmns.croa.models.Buffer;
 import algorithmns.croa.models.Point;
-import algorithmns.randomGenerator.IRandomGenerator;
+import algorithmns.LocalSearcher.randomGenerator.IRandomGenerator;
 
 import java.util.ArrayList;
 import java.util.List;

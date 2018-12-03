@@ -1,6 +1,6 @@
 package algorithmns.croa.models;
 
-import algorithmns.bestSolution.IBestSolutionNotifier;
+import algorithmns.bestSolutionObserver.IBestSolutionNotifier;
 import algorithmns.croa.calculatePE.ICalculatorPE;
 import algorithmns.equations.IEquation;
 
