@@ -21,9 +21,9 @@ public strictfp class MersenneTwisterFast extends Random implements Serializable
     private static final int TEMPERING_MASK_B = 0x9d2c5680;
     private static final int TEMPERING_MASK_C = 0xefc60000;
 
-    private int mt[]; // the array for the state vector
+    private int[] mt; // the array for the state vector
     private int mti; // mti==N+1 means mt[N] is not initialized
-    private int mag01[];
+    private int[] mag01;
 
     // a good initial seed (of int size, though stored in a long)
     //private static final long GOOD_SEED = 4357;
@@ -37,8 +37,8 @@ public strictfp class MersenneTwisterFast extends Random implements Serializable
         try
         {
             MersenneTwisterFast f = (MersenneTwisterFast)(super.clone());
-            f.mt = (int[])(mt.clone());
-            f.mag01 = (int[])(mag01.clone());
+            f.mt = mt.clone();
+            f.mag01 = mag01.clone();
             return f;
         }
         catch (CloneNotSupportedException e) { throw new InternalError(); } // should never happen
@@ -336,7 +336,7 @@ public strictfp class MersenneTwisterFast extends Random implements Serializable
         y ^= (y << 15) & TEMPERING_MASK_C;      // TEMPERING_SHIFT_T(y)
         y ^= (y >>> 18);                        // TEMPERING_SHIFT_L(y)
 
-        return (boolean)((y >>> 31) != 0);
+        return ((y >>> 31) != 0);
     }
 
 

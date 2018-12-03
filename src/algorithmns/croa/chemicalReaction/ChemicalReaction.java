@@ -1,7 +1,7 @@
 package algorithmns.croa.chemicalReaction;
 
 import algorithmns.croa.chemicalReaction.decomposition.IDecomposition;
-import algorithmns.croa.chemicalReaction.interMolecularIneffectiveCollission.IInterMolecularIneffectiveCollission;
+import algorithmns.croa.chemicalReaction.interMolecularIneffectiveCollission.IInterMolecularIneffectiveCollision;
 import algorithmns.croa.chemicalReaction.onWallIneffectiveCollission.IOnWallIneffectiveCollission;
 import algorithmns.croa.chemicalReaction.synthesis.ISynthesis;
 import algorithmns.croa.models.IMolecule;
@@ -12,21 +12,21 @@ public class ChemicalReaction implements IChemicalReactions {
 
 
     IDecomposition decomposition;
-    IOnWallIneffectiveCollission onWallIneffectiveCollission;
+    IOnWallIneffectiveCollission onWallIneffectiveCollision;
     ISynthesis synthesis;
-    IInterMolecularIneffectiveCollission interMolecularIneffectiveCollission;
+    IInterMolecularIneffectiveCollision interMolecularIneffectiveCollission;
 
 
-    public ChemicalReaction(IDecomposition decomposition, IOnWallIneffectiveCollission onWallIneffectiveCollission, ISynthesis synthesis , IInterMolecularIneffectiveCollission interMolecularIneffectiveCollission){
+    public ChemicalReaction(IDecomposition decomposition, IOnWallIneffectiveCollission onWallIneffectiveCollision, ISynthesis synthesis , IInterMolecularIneffectiveCollision interMolecularIneffectiveCollission){
         this.decomposition = decomposition;
-        this.onWallIneffectiveCollission = onWallIneffectiveCollission;
+        this.onWallIneffectiveCollision = onWallIneffectiveCollision;
         this.synthesis = synthesis;
         this.interMolecularIneffectiveCollission = interMolecularIneffectiveCollission;
     }
 
 
     public void onWallIneffectivCollission(IMolecule molecule) {
-        onWallIneffectiveCollission.onWallIneffectiveCollission(molecule);
+        onWallIneffectiveCollision.onWallIneffectiveCollission(molecule);
     }
 
     public List<IMolecule> decomposition(IMolecule molecule) {
@@ -35,7 +35,7 @@ public class ChemicalReaction implements IChemicalReactions {
 
     }
 
-    public void interMolecularIneffectivCollission(IMolecule molecule1, IMolecule molecule2) {
+    public void interMolecularIneffectiveCollision(IMolecule molecule1, IMolecule molecule2) {
 
         interMolecularIneffectiveCollission.interMolecularIneffectiveCollission(molecule1,molecule2);
     }

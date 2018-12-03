@@ -1,16 +1,16 @@
 package algorithmns.equations;
 
 import configuration.configuration.configurationAlgorithm;
-import algorithmns.equations.boundrys.Boundrys;
+import algorithmns.equations.boundrys.Boundary;
 import algorithmns.croa.models.Point;
 
 public class Rastrigin implements IEquation {
 
-    Boundrys boundry;
+    Boundary boundary;
     configuration.configuration.configurationAlgorithm configurationAlgorithm;
 
     public Rastrigin(){
-        boundry = new Boundrys(-5.12,5.12,-5.12,5.12);
+        boundary = new Boundary(-5.12,5.12,-5.12,5.12);
         configurationAlgorithm = new configurationAlgorithm(
                 1.4962, //c1
                 1.4962, //c2
@@ -40,6 +40,8 @@ public class Rastrigin implements IEquation {
 
         double[] koordinates = {point.x,point.y};
 
+
+        //could be also wrote as : -10 cos(2* π *x) - 10 cos(2 *π *y) + x^2 + y^2
         double sum = 10 * 2;
         for (int i = 0; i<2; i++){
 
@@ -50,7 +52,7 @@ public class Rastrigin implements IEquation {
 
     @Override
     public Point calculateGrade(Point point) {
-        //TODO: REIMPLEMENT -> NOT Grade its RANDOM
+
         return calculateRandomVector();
     }
 
@@ -59,7 +61,7 @@ public class Rastrigin implements IEquation {
     }
 
     @Override
-    public Boundrys getBoundrys() {
-        return boundry;
+    public Boundary getBoundary() {
+        return boundary;
     }
 }

@@ -1,31 +1,27 @@
 package algorithmns.scroa.chemicalReactions;
 
-import algorithmns.croa.chemicalReaction.decomposition.IDecomposition;
-import algorithmns.croa.chemicalReaction.interMolecularIneffectiveCollission.IInterMolecularIneffectiveCollission;
+import algorithmns.croa.chemicalReaction.interMolecularIneffectiveCollission.IInterMolecularIneffectiveCollision;
 import algorithmns.croa.chemicalReaction.onWallIneffectiveCollission.IOnWallIneffectiveCollission;
-import algorithmns.croa.chemicalReaction.synthesis.ISynthesis;
 import algorithmns.croa.models.IMolecule;
 import algorithmns.scroa.models.IMoleculeSCROA;
 import algorithmns.scroa.pso.psoUpdate.IPSOUpdate;
 
-import java.util.List;
-
 public class ChemicalReactionSCROA implements IChemicalReactionSCROA {
 
     IPSOUpdate psoUpdate;
-    IOnWallIneffectiveCollission onWallIneffectiveCollission;
-    IInterMolecularIneffectiveCollission interMolecularIneffectiveCollission;
+    IOnWallIneffectiveCollission onWallIneffectiveCollision;
+    IInterMolecularIneffectiveCollision interMolecularIneffectiveCollission;
 
 
-    public ChemicalReactionSCROA(IPSOUpdate ipsoUpdate, IOnWallIneffectiveCollission onWallIneffectiveCollission , IInterMolecularIneffectiveCollission interMolecularIneffectiveCollission){
+    public ChemicalReactionSCROA(IPSOUpdate ipsoUpdate, IOnWallIneffectiveCollission onWallIneffectiveCollision, IInterMolecularIneffectiveCollision interMolecularIneffectiveCollission){
         this.psoUpdate = ipsoUpdate;
-        this.onWallIneffectiveCollission = onWallIneffectiveCollission;
+        this.onWallIneffectiveCollision = onWallIneffectiveCollision;
         this.interMolecularIneffectiveCollission = interMolecularIneffectiveCollission;
     }
 
 
     public void onWallIneffectivCollission(IMolecule molecule) {
-        onWallIneffectiveCollission.onWallIneffectiveCollission(molecule);
+        onWallIneffectiveCollision.onWallIneffectiveCollission(molecule);
     }
 
     @Override

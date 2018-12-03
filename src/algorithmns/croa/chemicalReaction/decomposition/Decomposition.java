@@ -1,6 +1,6 @@
 package algorithmns.croa.chemicalReaction.decomposition;
 
-import algorithmns.equations.boundrys.Boundrys;
+import algorithmns.equations.boundrys.Boundary;
 import algorithmns.croa.models.Buffer;
 import algorithmns.croa.models.IMolecule;
 import algorithmns.croa.models.MoleculeCROA;
@@ -30,13 +30,13 @@ public class Decomposition implements IDecomposition {
 
         ArrayList<IMolecule> molecules = new ArrayList<>();
 
-        Boundrys boundrys = molecule.getEquation().getBoundrys();
-        double generatedY = (boundrys.getMaxY()-boundrys.getMinY())*randomGenerator.nextDouble()+boundrys.getMinY();
+        Boundary boundary = molecule.getEquation().getBoundary();
+        double generatedY = (boundary.getMaxY()- boundary.getMinY())*randomGenerator.nextDouble()+ boundary.getMinY();
         Point point1 = new Point(molecule.getCurrentStructure().x, generatedY);
         double PEp1 = molecule.getCalculatorPE().calculatePE(point1.x,point1.y,molecule.getEquation());
 
 
-        double generatedX = (boundrys.getMaxX()-boundrys.getMinX())*randomGenerator.nextDouble()+boundrys.getMinX();
+        double generatedX = (boundary.getMaxX()- boundary.getMinX())*randomGenerator.nextDouble()+ boundary.getMinX();
         Point point2 = new Point(molecule.getCurrentStructure().x, generatedX);
         double PEp2 = molecule.getCalculatorPE().calculatePE(point2.x,point2.y,molecule.getEquation());
 

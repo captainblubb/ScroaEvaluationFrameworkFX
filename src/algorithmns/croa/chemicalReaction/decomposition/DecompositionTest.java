@@ -24,7 +24,7 @@ public class DecompositionTest {
 
     Buffer buffer = new Buffer(0);
     Decomposition decomposition;
-    IRandomGenerator randomGenerator = new MersenneTwisterFast(System.nanoTime());;
+    IRandomGenerator randomGenerator = new MersenneTwisterFast(System.nanoTime());
     IEquation currentEquation = new Rosenbrock();
     ICalculatorPE calculatorPE = new CalculateFunction();
     ArrayList<IMolecule> molecules = new ArrayList<>();
@@ -45,8 +45,8 @@ public class DecompositionTest {
 
         for (int i = 0; i<2; i++){
             //Generate koords
-            double randomX =(randomGenerator.nextDouble() * (currentEquation.getBoundrys().getMaxX()- currentEquation.getBoundrys().getMinX())+ currentEquation.getBoundrys().getMinX());
-            double randomY =(randomGenerator.nextDouble() * (currentEquation.getBoundrys().getMaxY()- currentEquation.getBoundrys().getMinY())+ currentEquation.getBoundrys().getMinY());
+            double randomX =(randomGenerator.nextDouble() * (currentEquation.getBoundary().getMaxX()- currentEquation.getBoundary().getMinX())+ currentEquation.getBoundary().getMinX());
+            double randomY =(randomGenerator.nextDouble() * (currentEquation.getBoundary().getMaxY()- currentEquation.getBoundary().getMinY())+ currentEquation.getBoundary().getMinY());
             IMolecule molecule = new MoleculeCROA(new Point(randomX,randomY), currentEquation.calculateValue(new Point(randomX,randomY)),calculatorPE, currentEquation);
             molecule.setKE(globalConfig.configurationAlgorithm.minimumKe-1);
             molecules.add(molecule);
@@ -65,16 +65,16 @@ public class DecompositionTest {
         //Same Energylevel
         assertEquals(ke1 + ke2 + pe1 + pe2 + bufferBefore , molecules.get(0).getKE() + molecules.get(1).getKE() + molecules.get(0).getPE() + molecules.get(1).getPE());
 
-        boolean inBoundrysMolecule1 = !(molecules.get(0).getCurrentStructure().x >= currentEquation.getBoundrys().getMaxX()
-                || molecules.get(0).getCurrentStructure().y >= currentEquation.getBoundrys().getMaxY()
-                || molecules.get(0).getCurrentStructure().x <= currentEquation.getBoundrys().getMinX()
-                || molecules.get(0).getCurrentStructure().y <= -currentEquation.getBoundrys().getMaxY());
+        boolean inBoundrysMolecule1 = !(molecules.get(0).getCurrentStructure().x >= currentEquation.getBoundary().getMaxX()
+                || molecules.get(0).getCurrentStructure().y >= currentEquation.getBoundary().getMaxY()
+                || molecules.get(0).getCurrentStructure().x <= currentEquation.getBoundary().getMinX()
+                || molecules.get(0).getCurrentStructure().y <= -currentEquation.getBoundary().getMaxY());
 
 
-        boolean inBoundrysMolecule2 = !(molecules.get(1).getCurrentStructure().x >= currentEquation.getBoundrys().getMaxX()
-                || molecules.get(1).getCurrentStructure().y >= currentEquation.getBoundrys().getMaxY()
-                || molecules.get(1).getCurrentStructure().x <= currentEquation.getBoundrys().getMinX()
-                || molecules.get(1).getCurrentStructure().y <= -currentEquation.getBoundrys().getMaxY());
+        boolean inBoundrysMolecule2 = !(molecules.get(1).getCurrentStructure().x >= currentEquation.getBoundary().getMaxX()
+                || molecules.get(1).getCurrentStructure().y >= currentEquation.getBoundary().getMaxY()
+                || molecules.get(1).getCurrentStructure().x <= currentEquation.getBoundary().getMinX()
+                || molecules.get(1).getCurrentStructure().y <= -currentEquation.getBoundary().getMaxY());
 
         Assert.assertTrue((inBoundrysMolecule1 && inBoundrysMolecule2));
     }

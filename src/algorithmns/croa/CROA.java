@@ -7,13 +7,13 @@ import algorithmns.croa.chemicalReaction.ChemicalReaction;
 import algorithmns.croa.chemicalReaction.IChemicalReactions;
 import algorithmns.croa.chemicalReaction.decomposition.Decomposition;
 import algorithmns.croa.chemicalReaction.decomposition.IDecomposition;
-import algorithmns.croa.chemicalReaction.interMolecularIneffectiveCollission.IInterMolecularIneffectiveCollission;
-import algorithmns.croa.chemicalReaction.interMolecularIneffectiveCollission.InterMolecularIneffectiveCollission;
+import algorithmns.croa.chemicalReaction.interMolecularIneffectiveCollission.IInterMolecularIneffectiveCollision;
+import algorithmns.croa.chemicalReaction.interMolecularIneffectiveCollission.InterMolecularIneffectiveCollision;
 import algorithmns.croa.chemicalReaction.onWallIneffectiveCollission.IOnWallIneffectiveCollission;
 import algorithmns.croa.chemicalReaction.onWallIneffectiveCollission.OnWallIneffectiveCollission;
 import algorithmns.croa.chemicalReaction.synthesis.ISynthesis;
 import algorithmns.croa.chemicalReaction.synthesis.Synthesis;
-import algorithmns.equations.boundrys.Boundrys;
+import algorithmns.equations.boundrys.Boundary;
 import algorithmns.croa.models.Buffer;
 import algorithmns.croa.models.IMolecule;
 import algorithmns.croa.models.MoleculeCROA;
@@ -87,7 +87,7 @@ public class CROA implements IAlgorithm {
         //onwallIneffective
         IOnWallIneffectiveCollission onWallIneffectiveCollission = new OnWallIneffectiveCollission(randomGenerator,neighbourhoodSearchSingle,buffer);
         //intermolecularCollission
-        IInterMolecularIneffectiveCollission interMolecularIneffectiveCollission = new InterMolecularIneffectiveCollission(randomGenerator,neighbourhoodSearchTwo,buffer);
+        IInterMolecularIneffectiveCollision interMolecularIneffectiveCollission = new InterMolecularIneffectiveCollision(randomGenerator,neighbourhoodSearchTwo,buffer);
         //Chemical Reaction
         chemicalReactions = new ChemicalReaction(decomposition,onWallIneffectiveCollission,synthesis,interMolecularIneffectiveCollission);
 
@@ -105,16 +105,16 @@ public class CROA implements IAlgorithm {
 
         ArrayList<IMolecule> population = new ArrayList<>();
 
-        Boundrys boundrys = equation.getBoundrys();
+        Boundary boundary = equation.getBoundary();
         //Generate Population in Boundries
 
 
         //Check boundries start in boundrie not on boundrie
-        double xRange = (boundrys.getMaxX() - boundrys.getMinX());
+        double xRange = (boundary.getMaxX() - boundary.getMinX());
         if(xRange-2* globalConfig.distanceToBoundrys > 1){
             xRange-=(2* globalConfig.distanceToBoundrys);
         }
-        double yRange = (boundrys.getMaxY() - boundrys.getMinY());
+        double yRange = (boundary.getMaxY() - boundary.getMinY());
         if(yRange-2* globalConfig.distanceToBoundrys > 1){
             yRange-=(2* globalConfig.distanceToBoundrys);
         }
@@ -122,8 +122,8 @@ public class CROA implements IAlgorithm {
 
         for (int i = 0; i<initialPopoSize;i++){
 
-            double fixInX = boundrys.getMinX()+ globalConfig.distanceToBoundrys;
-            double fixInY = boundrys.getMinY()+ globalConfig.distanceToBoundrys;
+            double fixInX = boundary.getMinX()+ globalConfig.distanceToBoundrys;
+            double fixInY = boundary.getMinY()+ globalConfig.distanceToBoundrys;
 
             double randomX = randomGenerator.nextDouble()*xRange;
             double randomY = randomGenerator.nextDouble()*yRange;
@@ -233,7 +233,7 @@ public class CROA implements IAlgorithm {
                                     // System.out.println("--------interMolIneffectivce------------");
                                     interMolColHappend++;
 
-                                    chemicalReactions.interMolecularIneffectivCollission(molecule1, molecule2);
+                                    chemicalReactions.interMolecularIneffectiveCollision(molecule1, molecule2);
                                 }
 
                             }

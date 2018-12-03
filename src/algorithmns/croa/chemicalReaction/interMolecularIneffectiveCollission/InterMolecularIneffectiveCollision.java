@@ -9,14 +9,14 @@ import algorithmns.LocalSearcher.randomGenerator.IRandomGenerator;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InterMolecularIneffectiveCollission implements IInterMolecularIneffectiveCollission {
+public class InterMolecularIneffectiveCollision implements IInterMolecularIneffectiveCollision {
 
 
     IRandomGenerator randomGenerator;
     INeighbourhoodSearchTwo neighbourhoodSearchTwo;
     Buffer buffer;
 
-    public InterMolecularIneffectiveCollission(IRandomGenerator randomGenerator, INeighbourhoodSearchTwo neighbourhoodSearchTwo, Buffer buffer){
+    public InterMolecularIneffectiveCollision(IRandomGenerator randomGenerator, INeighbourhoodSearchTwo neighbourhoodSearchTwo, Buffer buffer){
         this.randomGenerator = randomGenerator;
         this.neighbourhoodSearchTwo = neighbourhoodSearchTwo;
         this.buffer = buffer;
@@ -33,16 +33,16 @@ public class InterMolecularIneffectiveCollission implements IInterMolecularIneff
             molecule2.increaseNumberOfHits();
 
             //(PE1 + PE2 + KE1+Ke2) - (PE1' + PE2')
-            double newEnergieAfterColl = (molecule1.getPE()+molecule2.getPE()+molecule1.getKE()+molecule2.getKE())
+            double newEnergyAfterColl = (molecule1.getPE()+molecule2.getPE()+molecule1.getKE()+molecule2.getKE())
                     - (molecule1.getCalculatorPE().calculatePE(potentialPoints.get(0).x,potentialPoints.get(0).y,molecule1.getEquation()) + molecule2.getCalculatorPE().calculatePE(potentialPoints.get(1).x,potentialPoints.get(1).y,molecule2.getEquation()));
-            if(newEnergieAfterColl > 0){
+            if(newEnergyAfterColl > 0){
 
-                double spreadOfKE = randomGenerator.nextDouble()*1.0; //the enegery that is to much gets spread to both molecules -> generate % of spread here
+                double spreadOfKE = randomGenerator.nextDouble()*1.0; //the energy that is to much gets spread to both molecules -> generate % of spread here
 
                 molecule1.setSolution(potentialPoints.get(0));
                 molecule2.setSolution(potentialPoints.get(1));
-                molecule1.setKE(newEnergieAfterColl*spreadOfKE);
-                molecule2.setKE(newEnergieAfterColl*(1-spreadOfKE));
+                molecule1.setKE(newEnergyAfterColl*spreadOfKE);
+                molecule2.setKE(newEnergyAfterColl*(1-spreadOfKE));
             }
         }
 

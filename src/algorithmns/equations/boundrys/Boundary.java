@@ -1,6 +1,7 @@
 package algorithmns.equations.boundrys;
 
-public class Boundrys {
+@SuppressWarnings("SpellCheckingInspection")
+public class Boundary {
 
 
     private double minX;
@@ -25,14 +26,14 @@ public class Boundrys {
     }
 
 
-    public Boundrys(double minX, double maxX, double minY, double maxY){
+    public Boundary(double minX, double maxX, double minY, double maxY){
         this.minX = minX;
         this.maxX = maxX;
         this.minY = minY;
         this.maxY = maxY;
     }
 
-    public boolean inBoundry(double x, double y){
+    public boolean inBoundary(double x, double y){
 
         return x >= minX && x <= maxX && y >= minY && y <= maxY;
 

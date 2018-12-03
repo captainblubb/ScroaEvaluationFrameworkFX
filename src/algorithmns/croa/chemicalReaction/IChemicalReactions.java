@@ -7,6 +7,6 @@ import java.util.List;
 public interface IChemicalReactions {
     void onWallIneffectivCollission(IMolecule molecule);
     List<IMolecule> decomposition(IMolecule molecule);
-    void interMolecularIneffectivCollission(IMolecule molecule , IMolecule molecule2);
+    void interMolecularIneffectiveCollision(IMolecule molecule , IMolecule molecule2);
     IMolecule synthesis(IMolecule molecule, IMolecule molecule2);
 }

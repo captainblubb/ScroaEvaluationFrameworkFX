@@ -23,7 +23,7 @@ class SynthesisTest {
 
     Buffer buffer = new Buffer(0);
     Synthesis synthesis;
-    IRandomGenerator randomGenerator = new MersenneTwisterFast(System.nanoTime());;
+    IRandomGenerator randomGenerator = new MersenneTwisterFast(System.nanoTime());
     IEquation currentEquation = new Rosenbrock();
     ICalculatorPE calculatorPE = new CalculateFunction();
     ArrayList<IMolecule> molecules = new ArrayList<>();
@@ -44,8 +44,8 @@ class SynthesisTest {
 
         for (int i = 0; i<2; i++){
             //Generate koords
-            double randomX =(randomGenerator.nextDouble() * (currentEquation.getBoundrys().getMaxX()- currentEquation.getBoundrys().getMinX())+ currentEquation.getBoundrys().getMinX());
-            double randomY =(randomGenerator.nextDouble() * (currentEquation.getBoundrys().getMaxY()- currentEquation.getBoundrys().getMinY())+ currentEquation.getBoundrys().getMinY());
+            double randomX =(randomGenerator.nextDouble() * (currentEquation.getBoundary().getMaxX()- currentEquation.getBoundary().getMinX())+ currentEquation.getBoundary().getMinX());
+            double randomY =(randomGenerator.nextDouble() * (currentEquation.getBoundary().getMaxY()- currentEquation.getBoundary().getMinY())+ currentEquation.getBoundary().getMinY());
             IMolecule molecule = new MoleculeCROA(new Point(randomX,randomY), currentEquation.calculateValue(new Point(randomX,randomY)),calculatorPE, currentEquation);
             molecule.setKE(globalConfig.configurationAlgorithm.minimumKe-1);
             molecules.add(molecule);
@@ -65,10 +65,10 @@ class SynthesisTest {
             //Same Energylevel
             assertEquals(ke1 + ke2 + pe1 + pe2 + bufferBefore , molecules.get(0).getKE() + molecules.get(1).getKE() +buffer.getBuffer()+ molecules.get(0).getPE() + molecules.get(1).getPE());
 
-            boolean inBoundrysMolecule1 = !(synthesisResult.getCurrentStructure().x >= currentEquation.getBoundrys().getMaxX()
-                    || synthesisResult.getCurrentStructure().y >= currentEquation.getBoundrys().getMaxY()
-                    || synthesisResult.getCurrentStructure().x <= currentEquation.getBoundrys().getMinX()
-                    || synthesisResult.getCurrentStructure().y <= -currentEquation.getBoundrys().getMaxY());
+            boolean inBoundrysMolecule1 = !(synthesisResult.getCurrentStructure().x >= currentEquation.getBoundary().getMaxX()
+                    || synthesisResult.getCurrentStructure().y >= currentEquation.getBoundary().getMaxY()
+                    || synthesisResult.getCurrentStructure().x <= currentEquation.getBoundary().getMinX()
+                    || synthesisResult.getCurrentStructure().y <= -currentEquation.getBoundary().getMaxY());
 
 
             Assert.assertTrue((inBoundrysMolecule1));

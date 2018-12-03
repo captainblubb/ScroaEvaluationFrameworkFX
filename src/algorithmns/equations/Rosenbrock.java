@@ -1,7 +1,7 @@
 package algorithmns.equations;
 
 import configuration.configuration.configurationAlgorithm;
-import algorithmns.equations.boundrys.Boundrys;
+import algorithmns.equations.boundrys.Boundary;
 import algorithmns.croa.models.Point;
 
 
@@ -11,11 +11,11 @@ import algorithmns.croa.models.Point;
  */
 public class Rosenbrock implements IEquation{
 
-    Boundrys boundrys;
+    Boundary boundary;
     configuration.configuration.configurationAlgorithm configurationAlgorithm;
 
     public Rosenbrock(){
-        this.boundrys = new Boundrys(-2.5,2.5,-2.5,2.5);
+        this.boundary = new Boundary(-2.5,2.5,-2.5,2.5);
         configurationAlgorithm = new configurationAlgorithm(
                 1.4962, //c1
                 1.4962, //c2
@@ -53,8 +53,8 @@ public class Rosenbrock implements IEquation{
     }
 
     @Override
-    public Boundrys getBoundrys() {
-        return boundrys;
+    public Boundary getBoundary() {
+        return boundary;
     }
 
 

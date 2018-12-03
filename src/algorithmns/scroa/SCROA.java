@@ -5,13 +5,13 @@ import algorithmns.bestSolutionObserver.BestSolution;
 import algorithmns.bestSolutionObserver.IBestSolutionListener;
 import algorithmns.croa.calculatePE.CalculateFunction;
 import algorithmns.croa.calculatePE.ICalculatorPE;
-import algorithmns.croa.chemicalReaction.interMolecularIneffectiveCollission.IInterMolecularIneffectiveCollission;
-import algorithmns.croa.chemicalReaction.interMolecularIneffectiveCollission.InterMolecularIneffectiveCollission;
+import algorithmns.croa.chemicalReaction.interMolecularIneffectiveCollission.IInterMolecularIneffectiveCollision;
+import algorithmns.croa.chemicalReaction.interMolecularIneffectiveCollission.InterMolecularIneffectiveCollision;
 import algorithmns.croa.chemicalReaction.onWallIneffectiveCollission.IOnWallIneffectiveCollission;
 import algorithmns.croa.chemicalReaction.onWallIneffectiveCollission.OnWallIneffectiveCollission;
 import configuration.configuration.globalConfig;
 import algorithmns.equations.IEquation;
-import algorithmns.equations.boundrys.Boundrys;
+import algorithmns.equations.boundrys.Boundary;
 import algorithmns.croa.models.Buffer;
 import algorithmns.croa.models.IMolecule;
 import algorithmns.croa.models.Point;
@@ -88,7 +88,7 @@ public class SCROA implements IAlgorithm {
         //onwallIneffective
         IOnWallIneffectiveCollission onWallIneffectiveCollission = new OnWallIneffectiveCollission(randomGenerator,neighbourhoodSearchSingle,buffer);
         //intermolecularCollission
-        IInterMolecularIneffectiveCollission interMolecularIneffectiveCollission = new InterMolecularIneffectiveCollission(randomGenerator,neighbourhoodSearchTwo,buffer);
+        IInterMolecularIneffectiveCollision interMolecularIneffectiveCollission = new InterMolecularIneffectiveCollision(randomGenerator,neighbourhoodSearchTwo,buffer);
         //Chemical Reaction
         chemicalReactionsSCROA = new ChemicalReactionSCROA(ipsoUpdate,onWallIneffectiveCollission,interMolecularIneffectiveCollission);
 
@@ -106,15 +106,15 @@ public class SCROA implements IAlgorithm {
 
         ArrayList<IMoleculeSCROA> population = new ArrayList<>();
 
-        Boundrys boundrys = equation.getBoundrys();
+        Boundary boundary = equation.getBoundary();
         //Generate Population in Boundries
 
         //Check boundries start in boundrie not on boundrie
-        double xRange = (boundrys.getMaxX() - boundrys.getMinX());
+        double xRange = (boundary.getMaxX() - boundary.getMinX());
         if(xRange-2* globalConfig.distanceToBoundrys > 1){
             xRange-=(2* globalConfig.distanceToBoundrys);
         }
-        double yRange = (boundrys.getMaxY() - boundrys.getMinY());
+        double yRange = (boundary.getMaxY() - boundary.getMinY());
         if(yRange-2* globalConfig.distanceToBoundrys > 1){
             yRange-=(2* globalConfig.distanceToBoundrys);
         }
@@ -123,8 +123,8 @@ public class SCROA implements IAlgorithm {
         for (int i = 0; i<initialPopoSize;i++){
 
 
-            double fixInX = boundrys.getMinX()+ globalConfig.distanceToBoundrys;
-            double fixInY = boundrys.getMinY()+ globalConfig.distanceToBoundrys;
+            double fixInX = boundary.getMinX()+ globalConfig.distanceToBoundrys;
+            double fixInY = boundary.getMinY()+ globalConfig.distanceToBoundrys;
 
             double randomX = randomGenerator.nextDouble()*xRange;
             double randomY = randomGenerator.nextDouble()*yRange;

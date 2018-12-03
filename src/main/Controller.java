@@ -1,11 +1,9 @@
 package main;
 
 import algorithmns.croa.CROA;
-import algorithmns.croa.models.Point;
 import algorithmns.equations.Rosenbrock;
 import configuration.configuration.globalConfig;
 import algorithmns.equations.IEquation;
-import algorithmns.equations.Rastrigin;
 import algorithmns.scroa.SCROA;
 import main.updateObject.IUpdateable;
 import main.updateObject.UpdateObject;
@@ -82,10 +80,10 @@ public class Controller implements IUpdateable {
 
 
         for(int i = 0; i<updateObject.getPoints().size();i++){
-            if(updateObject.getPoints().get(i).x >= currentEquation.getBoundrys().getMaxX()
-                    || updateObject.getPoints().get(i).y >= currentEquation.getBoundrys().getMaxY()
-                    ||updateObject.getPoints().get(i).x <= currentEquation.getBoundrys().getMinX()
-                    || updateObject.getPoints().get(i).y <= -currentEquation.getBoundrys().getMaxY()){
+            if(updateObject.getPoints().get(i).x >= currentEquation.getBoundary().getMaxX()
+                    || updateObject.getPoints().get(i).y >= currentEquation.getBoundary().getMaxY()
+                    ||updateObject.getPoints().get(i).x <= currentEquation.getBoundary().getMinX()
+                    || updateObject.getPoints().get(i).y <= -currentEquation.getBoundary().getMaxY()){
                 System.out.println("Bad Point in ALgo"+updateObject.getAlgorithmCounter()+" : "+ updateObject.getPoints().get(i).toParseFormat());
             }
         }

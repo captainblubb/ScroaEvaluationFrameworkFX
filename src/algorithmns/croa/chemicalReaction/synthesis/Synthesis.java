@@ -28,7 +28,7 @@ public class Synthesis implements ISynthesis {
 
         Point newPoint = new Point(newX,newY);
 
-        if(molecule1.getEquation().getBoundrys().inBoundry(newPoint.x,newPoint.y)){
+        if(molecule1.getEquation().getBoundary().inBoundary(newPoint.x,newPoint.y)){
 
            double newPE = molecule1.getCalculatorPE().calculatePE(newPoint.x,newPoint.y,molecule1.getEquation());
 

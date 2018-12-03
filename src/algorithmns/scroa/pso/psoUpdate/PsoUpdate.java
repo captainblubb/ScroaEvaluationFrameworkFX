@@ -79,7 +79,7 @@ public class PsoUpdate implements IPSOUpdate{
 
             Point newPoint = new Point(newPointX, newPointY);
 
-            boolean inBoundrys = moleculeSCROA.getEquation().getBoundrys().inBoundry(newPointX, newPointY);
+            boolean inBoundrys = moleculeSCROA.getEquation().getBoundary().inBoundary(newPointX, newPointY);
 
             //randomBuffer =[0...1] * [0....1]
             double randomBuffer = randomGenerator.nextDouble() * randomGenerator.nextDouble();

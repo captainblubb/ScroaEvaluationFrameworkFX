@@ -45,7 +45,7 @@ public class MoveAlongGrade implements INeighbourhoodSearchSingle {
         newY += grade.y * (1 / vectorLength) * factor;
 
 
-        if (equation.getBoundrys().inBoundry(newX,newY)){
+        if (equation.getBoundary().inBoundary(newX,newY)){
             return new Point(newX,newY);
         }
 

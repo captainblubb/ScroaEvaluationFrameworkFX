@@ -1,7 +1,7 @@
 package algorithmns.LocalSearcher.neighbourhoodSearch.neighbourhoodSearchTwo;
 
 import algorithmns.equations.IEquation;
-import algorithmns.equations.boundrys.Boundrys;
+import algorithmns.equations.boundrys.Boundary;
 import algorithmns.croa.models.Point;
 import algorithmns.LocalSearcher.randomGenerator.IRandomGenerator;
 import configuration.configuration.globalConfig;
@@ -40,16 +40,16 @@ public class RandombasedSearch implements INeighbourhoodSearchTwo {
         }
 
 
-        Boundrys boundrys = equation.getBoundrys();
+        Boundary boundary = equation.getBoundary();
 
-        if (newPoint1 != null && boundrys.inBoundry(newPoint1.x,newPoint1.y)){
+        if (newPoint1 != null && boundary.inBoundary(newPoint1.x,newPoint1.y)){
             newPoints.add(newPoint1);
         }else {
             newPoints.add(point1);
         }
 
 
-        if (newPoint2 != null && boundrys.inBoundry(newPoint2.x,newPoint2.y)){
+        if (newPoint2 != null && boundary.inBoundary(newPoint2.x,newPoint2.y)){
             newPoints.add(newPoint2);
         }else {
             newPoints.add(point2);
