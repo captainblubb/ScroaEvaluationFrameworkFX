@@ -35,7 +35,7 @@ public class configurationAlgorithm {
     // Als Standard-Belegung der Variablen wird von Eberhart und Shi [ES00] c1 = c2 = 1.4962 und w = 0.72984 vorgeschlagen,
     public double c1 = 1.4962;
     public double c2 = 1.4962;
-    public double w = 0.72984; //inertia weight w; How much % of old velocity is used to calc new
+    public double w = 0.52984; //inertia weight w; How much % of old velocity is used to calc new
     public double maxVelocity = 5;
     public double initialMaxLengthVelocityPerDim = 2;
 
@@ -52,7 +52,7 @@ public class configurationAlgorithm {
     public double initialKE = 50.0; // Initial KE of each MoleculeCROA
     public double minimumKe = 1.0; //Minimum of KE -> if Ke is less -> synthesis
     public double initialBuffer = 200.0; // Initial Buffer Energy
-    public int numberOfHitsForDecomposition = 70; //hits in molecule which leads to decomposition
+    public int numberOfHitsForDecomposition = 60; //hits in molecule which leads to decomposition
 
     //NeighboursearchSingle
     public double moveAlongGradeMaxStep = 0.0001;

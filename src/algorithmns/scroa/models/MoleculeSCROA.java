@@ -1,7 +1,7 @@
 package algorithmns.scroa.models;
 
-import algorithmns.bestSolution.IBestSolutionListener;
-import algorithmns.bestSolution.IBestSolutionNotifier;
+import algorithmns.bestSolutionObserver.IBestSolutionListener;
+import algorithmns.bestSolutionObserver.IBestSolutionNotifier;
 import algorithmns.croa.calculatePE.ICalculatorPE;
 import algorithmns.equations.IEquation;
 import algorithmns.croa.models.Point;

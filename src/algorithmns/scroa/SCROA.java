@@ -1,8 +1,8 @@
 package algorithmns.scroa;
 
 import algorithmns.IAlgorithm;
-import algorithmns.bestSolution.BestSolution;
-import algorithmns.bestSolution.IBestSolutionListener;
+import algorithmns.bestSolutionObserver.BestSolution;
+import algorithmns.bestSolutionObserver.IBestSolutionListener;
 import algorithmns.croa.calculatePE.CalculateFunction;
 import algorithmns.croa.calculatePE.ICalculatorPE;
 import algorithmns.croa.chemicalReaction.interMolecularIneffectiveCollission.IInterMolecularIneffectiveCollission;
@@ -15,10 +15,10 @@ import algorithmns.equations.boundrys.Boundrys;
 import algorithmns.croa.models.Buffer;
 import algorithmns.croa.models.IMolecule;
 import algorithmns.croa.models.Point;
-import algorithmns.neighbourhoodSearch.neighbourhoodSearchSingle.INeighbourhoodSearchSingle;
-import algorithmns.neighbourhoodSearch.neighbourhoodSearchSingle.MoveAlongGrade;
-import algorithmns.neighbourhoodSearch.neighbourhoodSearchTwo.INeighbourhoodSearchTwo;
-import algorithmns.neighbourhoodSearch.neighbourhoodSearchTwo.RandombasedSearch;
+import algorithmns.LocalSearcher.neighbourhoodSearch.neighbourhoodSearchSingle.INeighbourhoodSearchSingle;
+import algorithmns.LocalSearcher.neighbourhoodSearch.neighbourhoodSearchSingle.MoveAlongGrade;
+import algorithmns.LocalSearcher.neighbourhoodSearch.neighbourhoodSearchTwo.INeighbourhoodSearchTwo;
+import algorithmns.LocalSearcher.neighbourhoodSearch.neighbourhoodSearchTwo.RandombasedSearch;
 import algorithmns.scroa.chemicalReactions.ChemicalReactionSCROA;
 import algorithmns.scroa.chemicalReactions.IChemicalReactionSCROA;
 import algorithmns.scroa.models.IMoleculeSCROA;
@@ -26,8 +26,8 @@ import algorithmns.scroa.models.MoleculeSCROA;
 import algorithmns.scroa.pso.psoUpdate.IPSOUpdate;
 import algorithmns.scroa.pso.psoUpdate.PsoUpdate;
 import configuration.logger.LoggerFileWriter;
-import algorithmns.randomGenerator.IRandomGenerator;
-import algorithmns.randomGenerator.MersenneTwisterFast;
+import algorithmns.LocalSearcher.randomGenerator.IRandomGenerator;
+import algorithmns.LocalSearcher.randomGenerator.MersenneTwisterFast;
 import main.updateObject.IUpdateable;
 import main.updateObject.Point3d;
 import main.updateObject.UpdateObject;
@@ -255,8 +255,13 @@ public class SCROA implements IAlgorithm {
                                 }
                             }
 
+                            try {
+                                barrier.await();
+                            }catch (Exception exp){
 
+                            }
                             double energyEnd = molecules.stream().map(m -> m.getKE() + m.getPE()).collect(Collectors.summingDouble(d -> d)) + buffer.getBuffer();
+                            System.out.println("SCROA algorithm ("+algorithmCounter+") Best Point"+(new Point3d(currentBestSolution.getBestSolutionPoint().x,currentBestSolution.getBestSolutionPoint().y,currentBestSolution.getBestPE()).toParseFormat()));
                             System.out.println("SCROA algorithm ("+algorithmCounter+") Engieblinazstart : " + energyStart + "Engieblinazende : " + energyEnd + " start - end" + (energyStart - energyEnd));
                             System.out.println("SCROA algorithm ("+algorithmCounter+") interMol: " + interMolColHappend + " onWallin " + onWallCollHappend + " PSO instead of Synthesis " +psoHappendInsteadOfSynthesis +" PSO instead of Decomp "+ psoHappendInsteadOfDecomp);
                             System.out.println("SCROA algorithm ("+algorithmCounter+") Average KE end " + molecules.stream().map(m -> m.getKE()).collect(Collectors.averagingDouble(d -> d)));

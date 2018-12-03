@@ -1,4 +1,4 @@
-package algorithmns.neighbourhoodSearch.neighbourhoodSearchTwo;
+package algorithmns.LocalSearcher.neighbourhoodSearch.neighbourhoodSearchTwo;
 
 import algorithmns.croa.models.Point;
 

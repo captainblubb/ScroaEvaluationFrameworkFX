@@ -5,16 +5,14 @@ import static configuration.configuration.globalConfig.positionsAfterKomma;
 public class Point3d {
 
 
-    private double roundTo = Math.pow(10,positionsAfterKomma);
+        private double roundTo = Math.pow(10,positionsAfterKomma);
 
         public double x,y,z;
 
         public Point3d(double x, double y,double z){
-
             this.x = x;
             this.y = y;
             this.z = z;
-
         }
 
         @Override

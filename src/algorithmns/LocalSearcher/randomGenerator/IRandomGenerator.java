@@ -1,4 +1,4 @@
-package algorithmns.randomGenerator;
+package algorithmns.LocalSearcher.randomGenerator;
 
 public interface IRandomGenerator {
 

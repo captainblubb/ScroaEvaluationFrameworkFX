@@ -1,9 +1,9 @@
-package algorithmns.neighbourhoodSearch.neighbourhoodSearchTwo;
+package algorithmns.LocalSearcher.neighbourhoodSearch.neighbourhoodSearchTwo;
 
 import algorithmns.equations.IEquation;
 import algorithmns.equations.boundrys.Boundrys;
 import algorithmns.croa.models.Point;
-import algorithmns.randomGenerator.IRandomGenerator;
+import algorithmns.LocalSearcher.randomGenerator.IRandomGenerator;
 import configuration.configuration.globalConfig;
 
 import java.util.ArrayList;

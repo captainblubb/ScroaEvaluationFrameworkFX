@@ -1,11 +1,11 @@
 package algorithmns.croa.chemicalReaction.onWallIneffectiveCollission;
 
 import algorithmns.croa.models.IMolecule;
-import algorithmns.neighbourhoodSearch.neighbourhoodSearchSingle.INeighbourhoodSearchSingle;
+import algorithmns.LocalSearcher.neighbourhoodSearch.neighbourhoodSearchSingle.INeighbourhoodSearchSingle;
 import configuration.configuration.globalConfig;
 import algorithmns.croa.models.Buffer;
 import algorithmns.croa.models.Point;
-import algorithmns.randomGenerator.IRandomGenerator;
+import algorithmns.LocalSearcher.randomGenerator.IRandomGenerator;
 
 public class OnWallIneffectiveCollission implements IOnWallIneffectiveCollission {
 
