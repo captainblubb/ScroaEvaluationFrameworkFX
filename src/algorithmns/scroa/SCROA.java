@@ -73,7 +73,7 @@ public class SCROA implements IAlgorithm {
         // Initialzation
 
         //buffer
-        buffer = new Buffer(globalConfig.configurationAlgorithm.InitialBuffer);
+        buffer = new Buffer(globalConfig.configurationAlgorithm.initialBuffer);
         calculatorPE = new CalculateFunction();
         // Initialize algorithmns.croa
         //random generator -> init with nanoTime for less cluster
@@ -134,11 +134,11 @@ public class SCROA implements IAlgorithm {
 
             //System.out.println(point.toParseFormat());
 
-            double velocityX = randomGenerator.nextDouble()*2* globalConfig.configurationAlgorithm.InitialMaxLengthVelocityPerDim - globalConfig.configurationAlgorithm.InitialMaxLengthVelocityPerDim;
+            double velocityX = randomGenerator.nextDouble()*2* globalConfig.configurationAlgorithm.initialMaxLengthVelocityPerDim - globalConfig.configurationAlgorithm.initialMaxLengthVelocityPerDim;
 
-            double velocityY = randomGenerator.nextDouble()*2* globalConfig.configurationAlgorithm.InitialMaxLengthVelocityPerDim - globalConfig.configurationAlgorithm.InitialMaxLengthVelocityPerDim;
+            double velocityY = randomGenerator.nextDouble()*2* globalConfig.configurationAlgorithm.initialMaxLengthVelocityPerDim - globalConfig.configurationAlgorithm.initialMaxLengthVelocityPerDim;
 
-            MoleculeSCROA molecule = new MoleculeSCROA(point, globalConfig.configurationAlgorithm.InitialKE,calculatorPE,equation,new Point(velocityX,velocityY));
+            MoleculeSCROA molecule = new MoleculeSCROA(point, globalConfig.configurationAlgorithm.initialKE,calculatorPE,equation,new Point(velocityX,velocityY));
             population.add(molecule);
 
         }
@@ -186,7 +186,7 @@ public class SCROA implements IAlgorithm {
 
 
                                     //unimolekular reaction
-                                    if (randomCollission >= globalConfig.configurationAlgorithm.MoleColl || molecules.size() == 1) {
+                                    if (randomCollission >= globalConfig.configurationAlgorithm.moleColl || molecules.size() == 1) {
 
                                         int randomIndex = randomGenerator.nextInt(0, molecules.size() - 1);
 
@@ -248,7 +248,11 @@ public class SCROA implements IAlgorithm {
                                     barrier.await();
                                 }
                             } catch (Exception exp) {
-                                loggerFileWriter.logInformation("croa Thread ended in an Exception: " + exp);
+                                if (globalConfig.loggin) {
+                                    loggerFileWriter.logInformation("croa Thread ended in an Exception: " + exp);
+                                } else {
+                                    System.out.println(exp.toString()+" "+exp.getMessage());
+                                }
                             }
 
 
