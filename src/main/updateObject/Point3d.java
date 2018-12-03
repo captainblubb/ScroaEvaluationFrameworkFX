@@ -5,7 +5,7 @@ import static configuration.configuration.globalConfig.positionsAfterKomma;
 public class Point3d {
 
 
-    private double roundTo = Math.pow(10,positionsAfterKomma);
+        private double roundTo = Math.pow(10,positionsAfterKomma);
 
         public double x,y,z;
 
