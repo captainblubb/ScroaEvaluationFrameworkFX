@@ -1,6 +1,7 @@
 package main;
 
 import algorithmns.croa.CROA;
+import algorithmns.croa.models.Point;
 import configuration.configuration.globalConfig;
 import algorithmns.equations.IEquation;
 import algorithmns.equations.Rastrigin;
@@ -48,12 +49,11 @@ public class Controller implements IUpdateable {
 
 
         CyclicBarrier cyclicBarrier = new CyclicBarrier(2);
-        IEquation equation = new Rastrigin();
-        currentEquation = equation;
-        globalConfig.configurationAlgorithm = equation.getConfiguration();
+        currentEquation = new Rastrigin();
+        //globalConfig.configurationAlgorithm = equation.getConfiguration();
 
-        Thread worker = new Thread(new CROA(equation,this,1,cyclicBarrier));
-        Thread worker2 = new Thread(new SCROA(equation,this,2,cyclicBarrier));
+        Thread worker = new Thread(new CROA(currentEquation,this,1,cyclicBarrier));
+        Thread worker2 = new Thread(new SCROA(currentEquation,this,2,cyclicBarrier));
 
         worker.start();
         worker2.start();
@@ -86,6 +86,17 @@ public class Controller implements IUpdateable {
                 System.out.println("Bad Point in ALgo"+updateObject.getAlgorithmCounter()+" : "+ updateObject.getPoints().get(i).toParseFormat());
             }
         }
+
+
+        //Output Standardabweichung zwischen punkten Je Koordinate
+        if(updateObject.getIteration() == globalConfig.Iterations) {
+            for (int i = 0; i < updateObject.getPoints().size(); i++) {
+                System.out.println(updateObject.getPoints().get(i).toParseFormat());
+            }
+        }
+
+        System.out.println("Update finished");
+
     }
 
 }

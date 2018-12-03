@@ -38,7 +38,7 @@ public class MoveAlongGrade implements INeighbourhoodSearchSingle {
         }
 
         // 0...1
-        double factor = randomGenerator.nextDouble()* globalConfig.configurationAlgorithm.MoveAlongGradeMaxStep;
+        double factor = randomGenerator.nextDouble()* globalConfig.configurationAlgorithm.moveAlongGradeMaxStep;
 
         //Faktor * Richtung der Steigung
         newX += grade.x * (1 / vectorLength) * factor;

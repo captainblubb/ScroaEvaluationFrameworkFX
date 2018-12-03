@@ -69,7 +69,7 @@ public class CROA implements IAlgorithm {
         // Initialzation
 
         //buffer
-        buffer = new Buffer(globalConfig.configurationAlgorithm.InitialBuffer);
+        buffer = new Buffer(globalConfig.configurationAlgorithm.initialBuffer);
         calculatorPE = new CalculateFunction();
         // Initialize algorithmns.croa
         //random generator -> init with nanoTime for less cluster
@@ -130,7 +130,7 @@ public class CROA implements IAlgorithm {
 
             Point point = new Point(fixInX+randomX,fixInY+randomY);
            //System.out.println(point.toParseFormat());
-            MoleculeCROA molecule = new MoleculeCROA(point, globalConfig.configurationAlgorithm.InitialKE,calculatorPE,equation);
+            MoleculeCROA molecule = new MoleculeCROA(point, globalConfig.configurationAlgorithm.initialKE,calculatorPE,equation);
             population.add(molecule);
 
         }
@@ -176,7 +176,7 @@ public class CROA implements IAlgorithm {
 
 
                             //unimolekular reaction
-                            if (randomCollission >= globalConfig.configurationAlgorithm.MoleColl || molecules.size() == 1) {
+                            if (randomCollission >= globalConfig.configurationAlgorithm.moleColl || molecules.size() == 1) {
 
                                 int randomIndex = randomGenerator.nextInt(0, molecules.size() - 1);
 
@@ -253,7 +253,11 @@ public class CROA implements IAlgorithm {
                             barrier.await();
                         }
                     } catch (Exception exp) {
-                        loggerFileWriter.logInformation("croa Thread ended in an Exception: " + exp);
+                       if (globalConfig.loggin) {
+                           loggerFileWriter.logInformation("croa Thread ended in an Exception: " + exp);
+                       }else {
+                           System.out.println(exp.toString());
+                       }
                     }
 
 
