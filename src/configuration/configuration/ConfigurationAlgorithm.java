@@ -5,7 +5,7 @@ public class ConfigurationAlgorithm {
     public ConfigurationAlgorithm(double c1, double c2, double w, double maxVelocity, double InitialMaxLengthVelocityPerDim,
                                   double minVelocityStep, int trysOfPSOUpdate, double distanceToBoundrys, double KEminLossRate,
                                   double MoleColl, double InitialKE, double minimumKe, double InitialBuffer, int numberOfHitsForDecomposition,
-                                  double MoveAlongGradeMaxStep){
+                                  double MoveAlongGradeMaxStep,double impactOfOtherMolecule){
 
         this.c1 = c1;
         this.c2=c2;
@@ -22,7 +22,7 @@ public class ConfigurationAlgorithm {
         this.InitialBuffer = InitialBuffer;
         this.numberOfHitsForDecomposition = numberOfHitsForDecomposition;
         this.MoveAlongGradeMaxStep = MoveAlongGradeMaxStep;
-
+        this.impactOfOtherMolecule = impactOfOtherMolecule;
     }
 
 
@@ -57,7 +57,7 @@ public class ConfigurationAlgorithm {
     //NeighboursearchSingle
     public double MoveAlongGradeMaxStep = 0.0001;
 
-    //NeighbourghhoodsearchDouble
-    public double impactOfOtherMolecule = 0.1;
+    //NeighbourghhoodsearchTwo
+    public double impactOfOtherMolecule = 0.1; //Impact of Molecule to other Molecule in intermolecular coll
 
 }

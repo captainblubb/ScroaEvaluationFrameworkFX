@@ -1,6 +1,7 @@
 package main;
 
 import algorithmns.croa.CROA;
+import algorithmns.croa.models.Point;
 import configuration.configuration.globalConfig;
 import algorithmns.equations.IEquation;
 import algorithmns.equations.Rastrigin;
@@ -86,6 +87,19 @@ public class Controller implements IUpdateable {
                 System.out.println("Bad Point in ALgo"+updateObject.getAlgorithmCounter()+" : "+ updateObject.getPoints().get(i).toParseFormat());
             }
         }
+
+
+        //Output Standardabweichung zwischen punkten Je Koordinate
+        if(updateObject.getIteration() == globalConfig.Iterations) {
+
+            Point distanceBetweenPointsAvg = new Point(0,0);
+
+            for (int i = 0; i < updateObject.getPoints().size(); i++) {
+
+            }
+        }
+
+
     }
 
 }

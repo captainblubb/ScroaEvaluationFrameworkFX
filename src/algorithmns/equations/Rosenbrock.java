@@ -31,12 +31,13 @@ public class Rosenbrock implements IEquation{
                 5.0,   //minimumKE
                 0.0,   //InitialBuffer
                 60,    //numberOfHitsForDecomposition
-                0.0001); //MoveAlonGradeMaxStep);
+                0.0001,//MoveAlonGradeMaxStep);
+                0.1); //Impact of Molecule to other Molecule in intermolecular coll
     }
 
     @Override
     public ConfigurationAlgorithm getConfiguration() {
-        return null;
+        return configurationAlgorithm;
     }
 
     //return result for f(x,y)

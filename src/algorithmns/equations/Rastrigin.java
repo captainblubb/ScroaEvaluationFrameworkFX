@@ -26,7 +26,8 @@ public class Rastrigin implements IEquation {
                 5.0,   //minimumKE
                 0.0,   //InitialBuffer
                 60,    //numberOfHitsForDecomposition
-                0.0001); //MoveAlonGradeMaxStep);
+                0.0001, //MoveAlonGradeMaxStep);
+                0.1); //
     }
 
     @Override
