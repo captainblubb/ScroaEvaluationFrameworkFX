@@ -57,4 +57,7 @@ public class ConfigurationAlgorithm {
     //NeighboursearchSingle
     public double MoveAlongGradeMaxStep = 0.0001;
 
+    //NeighbourghhoodsearchDouble
+    public double impactOfOtherMolecule = 0.1;
+
 }
