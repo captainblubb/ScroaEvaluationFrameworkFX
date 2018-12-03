@@ -1,8 +1,6 @@
 package algorithmns.croa;
 
 import algorithmns.IAlgorithm;
-import algorithmns.croa.bestSolution.BestSolution;
-import algorithmns.croa.bestSolution.IBestSolutionListener;
 import algorithmns.croa.calculatePE.CalculateFunction;
 import algorithmns.croa.calculatePE.ICalculatorPE;
 import algorithmns.croa.chemicalReaction.ChemicalReaction;
@@ -15,23 +13,24 @@ import algorithmns.croa.chemicalReaction.onWallIneffectiveCollission.IOnWallInef
 import algorithmns.croa.chemicalReaction.onWallIneffectiveCollission.OnWallIneffectiveCollission;
 import algorithmns.croa.chemicalReaction.synthesis.ISynthesis;
 import algorithmns.croa.chemicalReaction.synthesis.Synthesis;
-import algorithmns.croa.equations.IEquation;
-import algorithmns.croa.equations.boundrys.Boundrys;
+import algorithmns.equations.boundrys.Boundrys;
 import algorithmns.croa.models.Buffer;
 import algorithmns.croa.models.IMolecule;
 import algorithmns.croa.models.MoleculeCROA;
 import algorithmns.croa.models.Point;
-import algorithmns.croa.neighbourhoodSearch.neighbourhoodSearchSingle.INeighbourhoodSearchSingle;
-import algorithmns.croa.neighbourhoodSearch.neighbourhoodSearchSingle.MoveAlongGrade;
-import algorithmns.croa.neighbourhoodSearch.neighbourhoodSearchTwo.INeighbourhoodSearchTwo;
-import algorithmns.croa.neighbourhoodSearch.neighbourhoodSearchTwo.RandombasedSearch;
-import configuration.globalConfig;
+import algorithmns.neighbourhoodSearch.neighbourhoodSearchSingle.INeighbourhoodSearchSingle;
+import algorithmns.neighbourhoodSearch.neighbourhoodSearchSingle.MoveAlongGrade;
+import algorithmns.neighbourhoodSearch.neighbourhoodSearchTwo.INeighbourhoodSearchTwo;
+import algorithmns.neighbourhoodSearch.neighbourhoodSearchTwo.RandombasedSearch;
+import algorithmns.bestSolution.*;
+import configuration.configuration.globalConfig;
 import configuration.logger.LoggerFileWriter;
-import configuration.randomGenerator.IRandomGenerator;
-import configuration.randomGenerator.MersenneTwisterFast;
+import algorithmns.randomGenerator.IRandomGenerator;
+import algorithmns.randomGenerator.MersenneTwisterFast;
 import main.updateObject.IUpdateable;
 import main.updateObject.Point3d;
 import main.updateObject.UpdateObject;
+import algorithmns.equations.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,7 +69,7 @@ public class CROA implements IAlgorithm {
         // Initialzation
 
         //buffer
-        buffer = new Buffer(globalConfig.InitialBuffer);
+        buffer = new Buffer(globalConfig.configurationAlgorithm.InitialBuffer);
         calculatorPE = new CalculateFunction();
         // Initialize algorithmns.croa
         //random generator -> init with nanoTime for less cluster
@@ -131,7 +130,7 @@ public class CROA implements IAlgorithm {
 
             Point point = new Point(fixInX+randomX,fixInY+randomY);
            //System.out.println(point.toParseFormat());
-            MoleculeCROA molecule = new MoleculeCROA(point, globalConfig.InitialKE,calculatorPE,equation);
+            MoleculeCROA molecule = new MoleculeCROA(point, globalConfig.configurationAlgorithm.InitialKE,calculatorPE,equation);
             population.add(molecule);
 
         }
@@ -177,13 +176,13 @@ public class CROA implements IAlgorithm {
 
 
                             //unimolekular reaction
-                            if (randomCollission >= globalConfig.MoleColl || molecules.size() == 1) {
+                            if (randomCollission >= globalConfig.configurationAlgorithm.MoleColl || molecules.size() == 1) {
 
                                 int randomIndex = randomGenerator.nextInt(0, molecules.size() - 1);
 
                                 IMolecule selectedMolecule = molecules.get(randomIndex);
 
-                                if (selectedMolecule.getNumberOfHits() >= globalConfig.numberOfHitsForDecomposition) {
+                                if (selectedMolecule.getNumberOfHits() >= globalConfig.configurationAlgorithm.numberOfHitsForDecomposition) {
                                     //decomposition
                                     decompositionTrys++;
                                     List<IMolecule> decompositionResult = chemicalReactions.decomposition(selectedMolecule);
@@ -216,7 +215,7 @@ public class CROA implements IAlgorithm {
                                 IMolecule molecule1 = molecules.get(randomIndex1);
                                 IMolecule molecule2 = molecules.get(randomIndex2);
 
-                                if (molecule1.getKE() <= globalConfig.minimumKe && molecule2.getKE() <= globalConfig.minimumKe) {
+                                if (molecule1.getKE() <= globalConfig.configurationAlgorithm.minimumKe && molecule2.getKE() <= globalConfig.configurationAlgorithm.minimumKe) {
                                     //synthesis
                                     synthesisTrys++;
 

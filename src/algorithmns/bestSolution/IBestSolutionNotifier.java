@@ -1,4 +1,4 @@
-package algorithmns.croa.bestSolution;
+package algorithmns.bestSolution;
 
 public interface IBestSolutionNotifier {
 

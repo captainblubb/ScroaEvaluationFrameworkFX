@@ -1,34 +1,33 @@
 package algorithmns.scroa;
 
 import algorithmns.IAlgorithm;
-import algorithmns.croa.bestSolution.BestSolution;
-import algorithmns.croa.bestSolution.IBestSolutionListener;
+import algorithmns.bestSolution.BestSolution;
+import algorithmns.bestSolution.IBestSolutionListener;
 import algorithmns.croa.calculatePE.CalculateFunction;
 import algorithmns.croa.calculatePE.ICalculatorPE;
 import algorithmns.croa.chemicalReaction.interMolecularIneffectiveCollission.IInterMolecularIneffectiveCollission;
 import algorithmns.croa.chemicalReaction.interMolecularIneffectiveCollission.InterMolecularIneffectiveCollission;
 import algorithmns.croa.chemicalReaction.onWallIneffectiveCollission.IOnWallIneffectiveCollission;
 import algorithmns.croa.chemicalReaction.onWallIneffectiveCollission.OnWallIneffectiveCollission;
-import configuration.globalConfig;
-import algorithmns.croa.equations.IEquation;
-import algorithmns.croa.equations.boundrys.Boundrys;
+import configuration.configuration.globalConfig;
+import algorithmns.equations.IEquation;
+import algorithmns.equations.boundrys.Boundrys;
 import algorithmns.croa.models.Buffer;
 import algorithmns.croa.models.IMolecule;
 import algorithmns.croa.models.Point;
-import algorithmns.croa.neighbourhoodSearch.neighbourhoodSearchSingle.INeighbourhoodSearchSingle;
-import algorithmns.croa.neighbourhoodSearch.neighbourhoodSearchSingle.MoveAlongGrade;
-import algorithmns.croa.neighbourhoodSearch.neighbourhoodSearchTwo.INeighbourhoodSearchTwo;
-import algorithmns.croa.neighbourhoodSearch.neighbourhoodSearchTwo.RandombasedSearch;
+import algorithmns.neighbourhoodSearch.neighbourhoodSearchSingle.INeighbourhoodSearchSingle;
+import algorithmns.neighbourhoodSearch.neighbourhoodSearchSingle.MoveAlongGrade;
+import algorithmns.neighbourhoodSearch.neighbourhoodSearchTwo.INeighbourhoodSearchTwo;
+import algorithmns.neighbourhoodSearch.neighbourhoodSearchTwo.RandombasedSearch;
 import algorithmns.scroa.chemicalReactions.ChemicalReactionSCROA;
 import algorithmns.scroa.chemicalReactions.IChemicalReactionSCROA;
 import algorithmns.scroa.models.IMoleculeSCROA;
 import algorithmns.scroa.models.MoleculeSCROA;
-import algorithmns.scroa.pso.configPSO;
 import algorithmns.scroa.pso.psoUpdate.IPSOUpdate;
 import algorithmns.scroa.pso.psoUpdate.PsoUpdate;
 import configuration.logger.LoggerFileWriter;
-import configuration.randomGenerator.IRandomGenerator;
-import configuration.randomGenerator.MersenneTwisterFast;
+import algorithmns.randomGenerator.IRandomGenerator;
+import algorithmns.randomGenerator.MersenneTwisterFast;
 import main.updateObject.IUpdateable;
 import main.updateObject.Point3d;
 import main.updateObject.UpdateObject;
@@ -74,7 +73,7 @@ public class SCROA implements IAlgorithm {
         // Initialzation
 
         //buffer
-        buffer = new Buffer(globalConfig.InitialBuffer);
+        buffer = new Buffer(globalConfig.configurationAlgorithm.InitialBuffer);
         calculatorPE = new CalculateFunction();
         // Initialize algorithmns.croa
         //random generator -> init with nanoTime for less cluster
@@ -135,11 +134,11 @@ public class SCROA implements IAlgorithm {
 
             //System.out.println(point.toParseFormat());
 
-            double velocityX = randomGenerator.nextDouble()*2* configPSO.InitialMaxLengthVelocityPerDim - configPSO.InitialMaxLengthVelocityPerDim;
+            double velocityX = randomGenerator.nextDouble()*2* globalConfig.configurationAlgorithm.InitialMaxLengthVelocityPerDim - globalConfig.configurationAlgorithm.InitialMaxLengthVelocityPerDim;
 
-            double velocityY = randomGenerator.nextDouble()*2* configPSO.InitialMaxLengthVelocityPerDim - configPSO.InitialMaxLengthVelocityPerDim;
+            double velocityY = randomGenerator.nextDouble()*2* globalConfig.configurationAlgorithm.InitialMaxLengthVelocityPerDim - globalConfig.configurationAlgorithm.InitialMaxLengthVelocityPerDim;
 
-            MoleculeSCROA molecule = new MoleculeSCROA(point, globalConfig.InitialKE,calculatorPE,equation,new Point(velocityX,velocityY));
+            MoleculeSCROA molecule = new MoleculeSCROA(point, globalConfig.configurationAlgorithm.InitialKE,calculatorPE,equation,new Point(velocityX,velocityY));
             population.add(molecule);
 
         }
@@ -187,13 +186,13 @@ public class SCROA implements IAlgorithm {
 
 
                                     //unimolekular reaction
-                                    if (randomCollission >= globalConfig.MoleColl || molecules.size() == 1) {
+                                    if (randomCollission >= globalConfig.configurationAlgorithm.MoleColl || molecules.size() == 1) {
 
                                         int randomIndex = randomGenerator.nextInt(0, molecules.size() - 1);
 
                                         IMoleculeSCROA selectedMolecule = molecules.get(randomIndex);
 
-                                        if (selectedMolecule.getNumberOfHits() >= globalConfig.numberOfHitsForDecomposition) {
+                                        if (selectedMolecule.getNumberOfHits() >= globalConfig.configurationAlgorithm.numberOfHitsForDecomposition) {
                                             //PSO
                                             psoHappendInsteadOfDecomp++;
                                             chemicalReactionsSCROA.psoUpdate(selectedMolecule);
@@ -218,7 +217,7 @@ public class SCROA implements IAlgorithm {
                                         IMoleculeSCROA molecule1 = molecules.get(randomIndex1);
                                         IMoleculeSCROA molecule2 = molecules.get(randomIndex2);
 
-                                        if (molecule1.getKE() <= globalConfig.minimumKe && molecule2.getKE() <= globalConfig.minimumKe) {
+                                        if (molecule1.getKE() <= globalConfig.configurationAlgorithm.minimumKe && molecule2.getKE() <= globalConfig.configurationAlgorithm.minimumKe) {
                                             //PSO
                                             psoHappendInsteadOfSynthesis++;
                                             chemicalReactionsSCROA.psoUpdate(molecule1);

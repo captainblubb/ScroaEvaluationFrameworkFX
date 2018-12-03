@@ -1,11 +1,11 @@
 package algorithmns.croa.chemicalReaction.onWallIneffectiveCollission;
 
 import algorithmns.croa.models.IMolecule;
-import algorithmns.croa.neighbourhoodSearch.neighbourhoodSearchSingle.INeighbourhoodSearchSingle;
-import configuration.globalConfig;
+import algorithmns.neighbourhoodSearch.neighbourhoodSearchSingle.INeighbourhoodSearchSingle;
+import configuration.configuration.globalConfig;
 import algorithmns.croa.models.Buffer;
 import algorithmns.croa.models.Point;
-import configuration.randomGenerator.IRandomGenerator;
+import algorithmns.randomGenerator.IRandomGenerator;
 
 public class OnWallIneffectiveCollission implements IOnWallIneffectiveCollission {
 
@@ -42,7 +42,7 @@ public class OnWallIneffectiveCollission implements IOnWallIneffectiveCollission
                 //der neue Punkt entspreicht den vorraussetzungen :
                 //neues PE ist besser als aktuelles PE+KE
                 //Generate a -> Losrate of KE to buffer
-                double a = randomGenerator.nextDouble() * (1 - globalConfig.KEminLossRate) + globalConfig.KEminLossRate;
+                double a = randomGenerator.nextDouble() * (1 - globalConfig.configurationAlgorithm.KEminLossRate) + globalConfig.configurationAlgorithm.KEminLossRate;
 
                 //KE = (PE - PE' + KE ) * a
                 double newKE = (molecule.getPE() - (molecule.getCalculatorPE().calculatePE(newPoint.x, newPoint.y, molecule.getEquation())) + molecule.getKE()) * (1-a);

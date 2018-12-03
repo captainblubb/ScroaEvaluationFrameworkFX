@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="misc">
+    <CLASSES>
+      <root url="file:///Library/Java/JavaVirtualMachines/jzy3d-api-master/jzy3d-api/lib/misc" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file:///Library/Java/JavaVirtualMachines/jzy3d-api-master/jzy3d-api/lib/misc" />
+    </SOURCES>
+    <jarDirectory url="file:///Library/Java/JavaVirtualMachines/jzy3d-api-master/jzy3d-api/lib/misc" recursive="false" />
+    <jarDirectory url="file:///Library/Java/JavaVirtualMachines/jzy3d-api-master/jzy3d-api/lib/misc" recursive="false" type="SOURCES" />
+  </library>
+</component>

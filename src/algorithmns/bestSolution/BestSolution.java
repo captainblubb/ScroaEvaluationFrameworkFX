@@ -1,4 +1,4 @@
-package algorithmns.croa.bestSolution;
+package algorithmns.bestSolution;
 
 import algorithmns.croa.models.Point;
 

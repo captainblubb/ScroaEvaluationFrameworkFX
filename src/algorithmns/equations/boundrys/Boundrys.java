@@ -1,4 +1,4 @@
-package algorithmns.croa.equations.boundrys;
+package algorithmns.equations.boundrys;
 
 public class Boundrys {
 

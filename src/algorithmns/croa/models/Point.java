@@ -1,6 +1,6 @@
 package algorithmns.croa.models;
 
-import static configuration.globalConfig.positionsAfterKomma;
+import static configuration.configuration.globalConfig.positionsAfterKomma;
 
 public class Point {
 

@@ -1,11 +1,11 @@
 package algorithmns.scroa.pso.psoUpdate;
 
-import algorithmns.croa.bestSolution.IBestSolutionListener;
+import algorithmns.bestSolution.IBestSolutionListener;
 import algorithmns.croa.models.Buffer;
 import algorithmns.croa.models.Point;
 import algorithmns.scroa.models.IMoleculeSCROA;
-import algorithmns.scroa.pso.configPSO;
-import configuration.randomGenerator.IRandomGenerator;
+import configuration.configuration.globalConfig;
+import algorithmns.randomGenerator.IRandomGenerator;
 
 public class PsoUpdate implements IPSOUpdate{
 
@@ -27,7 +27,7 @@ public class PsoUpdate implements IPSOUpdate{
 
         updateVelocityMol(moleculeSCROA);
 
-        moveMoleculeByVelocity(moleculeSCROA,configPSO.trysOfPSOUpdate);
+        moveMoleculeByVelocity(moleculeSCROA, globalConfig.configurationAlgorithm.trysOfPSOUpdate);
 
     }
 
@@ -41,19 +41,19 @@ public class PsoUpdate implements IPSOUpdate{
         double r2 = randomGenerator.nextDouble();
 
                             // w*CurrentVelocity
-        double newVeolcityX = configPSO.w*moleculeSCROA.getVelocity().x
+        double newVeolcityX = globalConfig.configurationAlgorithm.w*moleculeSCROA.getVelocity().x
                             //+ c1*r1*(molBest -molCurrent)
-                            +configPSO.c1*r1*(moleculeSCROA.getMinStructure().x - moleculeSCROA.getCurrentStructure().x)
+                            +globalConfig.configurationAlgorithm.c1*r1*(moleculeSCROA.getMinStructure().x - moleculeSCROA.getCurrentStructure().x)
                             //+ c2*r2*(bestGlobal-currentStructure)
-                            +configPSO.c2*r2*(bestSolutionListener.getBestSolutionPoint().x- moleculeSCROA.getCurrentStructure().x);
+                            +globalConfig.configurationAlgorithm.c2*r2*(bestSolutionListener.getBestSolutionPoint().x- moleculeSCROA.getCurrentStructure().x);
 
 
                               // w*CurrentVelocity
-        double newVelocityY = configPSO.w*moleculeSCROA.getVelocity().y
+        double newVelocityY = globalConfig.configurationAlgorithm.w*moleculeSCROA.getVelocity().y
                                //+ c1*r1*(molBest -molCurrent)
-                               +configPSO.c1*r1*(moleculeSCROA.getMinStructure().y - moleculeSCROA.getCurrentStructure().y)
+                               +globalConfig.configurationAlgorithm.c1*r1*(moleculeSCROA.getMinStructure().y - moleculeSCROA.getCurrentStructure().y)
                                //+ c2*r2*(bestGlobal-currentStructure)
-                               +configPSO.c2*r2*(bestSolutionListener.getBestSolutionPoint().y- moleculeSCROA.getCurrentStructure().y);
+                               +globalConfig.configurationAlgorithm.c2*r2*(bestSolutionListener.getBestSolutionPoint().y- moleculeSCROA.getCurrentStructure().y);
 
 
             //TODO: Check Length of Velocity -> MaxVelocity????
@@ -70,7 +70,7 @@ public class PsoUpdate implements IPSOUpdate{
         if(trys > 0) {
             //zufällig stark in die RIchtung -> neue Pos generieren
 
-            double stepPercentage = randomGenerator.nextDouble() * (1 - configPSO.minVelocityStep) + configPSO.minVelocityStep;
+            double stepPercentage = randomGenerator.nextDouble() * (1 - globalConfig.configurationAlgorithm.minVelocityStep) + globalConfig.configurationAlgorithm.minVelocityStep;
 
 
             // neue position -> molCurrentPos + mol.Velocity*stepPercentage

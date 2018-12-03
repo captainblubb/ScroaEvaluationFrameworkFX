@@ -1,6 +1,6 @@
 package algorithmns.croa.calculatePE;
 
-import algorithmns.croa.equations.IEquation;
+import algorithmns.equations.IEquation;
 
 public interface ICalculatorPE {
 

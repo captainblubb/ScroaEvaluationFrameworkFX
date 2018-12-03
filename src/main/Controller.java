@@ -1,8 +1,9 @@
 package main;
 
 import algorithmns.croa.CROA;
-import algorithmns.croa.equations.IEquation;
-import algorithmns.croa.equations.Rastrigin;
+import configuration.configuration.globalConfig;
+import algorithmns.equations.IEquation;
+import algorithmns.equations.Rastrigin;
 import algorithmns.scroa.SCROA;
 import main.updateObject.IUpdateable;
 import main.updateObject.UpdateObject;
@@ -13,8 +14,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 
 import java.util.concurrent.CyclicBarrier;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class Controller implements IUpdateable {
 
@@ -42,6 +41,7 @@ public class Controller implements IUpdateable {
     @FXML
     private Button pauseButton;
 
+    IEquation currentEquation;
 
     @FXML
     private void startSimulation() {
@@ -49,6 +49,8 @@ public class Controller implements IUpdateable {
 
         CyclicBarrier cyclicBarrier = new CyclicBarrier(2);
         IEquation equation = new Rastrigin();
+        currentEquation = equation;
+        globalConfig.configurationAlgorithm = equation.getConfiguration();
 
         Thread worker = new Thread(new CROA(equation,this,1,cyclicBarrier));
         Thread worker2 = new Thread(new SCROA(equation,this,2,cyclicBarrier));
@@ -75,6 +77,15 @@ public class Controller implements IUpdateable {
         System.out.println("Update Received Best point of algorithmn "+updateObject.getAlgorithmCounter()
                 +" : Iteration: "+updateObject.getIteration()+" "+updateObject.getBestPoint().toParseFormat()
                 +" Population count : "+updateObject.getPoints().size());
+
+        for(int i = 0; i<updateObject.getPoints().size();i++){
+            if(updateObject.getPoints().get(i).x >= currentEquation.getBoundrys().getMaxX()
+                    || updateObject.getPoints().get(i).y >= currentEquation.getBoundrys().getMaxY()
+                    ||updateObject.getPoints().get(i).x <= currentEquation.getBoundrys().getMinX()
+                    || updateObject.getPoints().get(i).y <= -currentEquation.getBoundrys().getMaxY()){
+                System.out.println("Bad Point in ALgo"+updateObject.getAlgorithmCounter()+" : "+ updateObject.getPoints().get(i).toParseFormat());
+            }
+        }
     }
 
 }

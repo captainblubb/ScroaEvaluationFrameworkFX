@@ -1,8 +1,8 @@
 package algorithmns.croa.models;
 
-import algorithmns.croa.bestSolution.IBestSolutionNotifier;
+import algorithmns.bestSolution.IBestSolutionNotifier;
 import algorithmns.croa.calculatePE.ICalculatorPE;
-import algorithmns.croa.equations.IEquation;
+import algorithmns.equations.IEquation;
 
 public interface IMolecule extends IBestSolutionNotifier {
 
